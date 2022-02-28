@@ -46,6 +46,7 @@ export const AutoFlowLogoText = styled.h1`
 
     -webkit-text-stroke: .0085em black;
     margin-bottom: 0px;
+    
 
 `
 
@@ -54,4 +55,12 @@ export const AutoflowCatch = styled.h1`
     margin-top: 0px;
     color: white;
     -webkit-text-stroke: .0085em black;
+`
+
+export const FlowRight = styled.div`
+    float: right;
+    margin-right: 0.35em;
+    margin-top: 4px;
+    margin-bottom: 3px;
+    cursor: pointer;
 `
