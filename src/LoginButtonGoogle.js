@@ -1,5 +1,5 @@
 import React from 'react'
-import {LoginButton} from './Styled'
+import {LoginButton} from './Styles/Styled'
 
 
 export default function LoginButtonGoogle() {
