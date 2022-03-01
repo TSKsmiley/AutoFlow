@@ -5,7 +5,7 @@ export default function MainPanel() {
   return (
     <>
       <Navbar />
-      <h1>Din mor</h1>
+      <h1>Din mor og din far</h1>
     </>
   )
 }
