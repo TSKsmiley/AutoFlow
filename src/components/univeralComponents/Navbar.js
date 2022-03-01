@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import Navbutton from './Navbutton'
 import NavLoginButton from './NavLoginButton'
-import LoginButtonGoogle from './LoginButtonGoogle'
 import { NavbarStyled } from '../../Styles/Styled'
 
 

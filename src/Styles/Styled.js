@@ -4,7 +4,7 @@ export const LoginButton = styled.button`
     float: right;
     cursor: pointer;
     width: 8em;
-    margin: .20em 1em auto auto;
+    margin: 1.7em 1em auto auto;
     
     transition: all .5s ease;
     color: #fff;
@@ -34,11 +34,12 @@ export const NavButton = styled.button`
     height: 50px;
     width: 1.25em;
     margin-left: .35em;
+    margin-top: 25px;
 `
 
 export const NavbarStyled = styled.div`
     background: linear-gradient(45deg, hsl(207.5, 84.8%, 51%), hsla(240, 84%, 62%, 1));
-    height: 50px;
+    height: 100px;
 
 `
 
