@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
+        background-position: center;
     }
 `
 
