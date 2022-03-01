@@ -2,17 +2,23 @@ import React, { Fragment } from 'react'
 import GoogleLogin from 'react-google-login'
 import { FlowRight } from './Styles/Styled'
 import { GoogleLogout } from 'react-google-login'
+import { useNavigate } from "react-router-dom";
 
 
 export default function LoginButtonGoogle() {
+
+  const navigate = useNavigate();
+
   const responseGoogle = (response) => {
-    console.log(response);
+    navigate("/panel");
+    console.log("Successfully logged in!");
+    //console.log(response);
   }
 
-  const logout = (response) => {
-    console.log(response);
+  const logout = () => {
+    navigate("/");
+    console.log("Successfully logged out!");
   }
-
 
   return (
     <Fragment>
@@ -29,7 +35,8 @@ export default function LoginButtonGoogle() {
         <GoogleLogout
           clientId="258375953305-7j1t10b7nlkrlgclfm94a86q55k3v5d9.apps.googleusercontent.com"
           buttonText="Logout"
-          onLogoutSuccess={logout}>
+          
+          onLogoutSuccess = {logout}>
         </GoogleLogout>
       </FlowRight>
     </Fragment>
