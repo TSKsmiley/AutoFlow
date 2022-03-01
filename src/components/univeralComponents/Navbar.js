@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Navbutton from './Navbutton'
-import LoginButtonGoogle from './LoginButtonGoogle'
-import { NavbarStyled } from './Styles/Styled'
+import NavLoginButton from './NavLoginButton'
+import { NavbarStyled } from '../../Styles/Styled'
 
 
 export default function Navbar() {
@@ -9,7 +9,7 @@ export default function Navbar() {
     <Fragment>
         <NavbarStyled>
             <Navbutton />
-            <LoginButtonGoogle />  
+            <NavLoginButton />
         </NavbarStyled>
     </Fragment>
   )

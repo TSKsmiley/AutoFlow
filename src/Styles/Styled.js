@@ -1,15 +1,28 @@
 import styled from 'styled-components'
 
 export const LoginButton = styled.button`
-    color: white;
-    background-color: black;
     float: right;
     cursor: pointer;
-    height: 2.25em;
-    width: 10em;
+    width: 8em;
+    margin: 1.7em 1em auto auto;
+    
+    transition: all .5s ease;
+    color: #fff;
+    border: 3px solid white;
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
     text-align: center;
-    margin: 10px;
-`
+    line-height: 1;
+    font-size: 17px;
+    background-color : transparent;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
+    &:hover {
+        color: #001F3F;
+        background-color: #fff;
+    }
+    `
 
 export const NavButton = styled.button`
     color: white;
@@ -21,11 +34,18 @@ export const NavButton = styled.button`
     height: 50px;
     width: 1.25em;
     margin-left: .35em;
+    margin-top: 25px;
 `
 
 export const NavbarStyled = styled.div`
     background: linear-gradient(45deg, hsl(207.5, 84.8%, 51%), hsla(240, 84%, 62%, 1));
-    height: 50px;
+    height: 100px;
+
+`
+
+export const NavbarPanelStyled = styled.div`
+    background-color: blue;
+    width: 150px;
 
 `
 

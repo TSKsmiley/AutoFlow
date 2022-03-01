@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react'
 import GoogleLogin from 'react-google-login'
-import { FlowRight } from './Styles/Styled'
+import { FlowRight } from '../../Styles/Styled'
 import { GoogleLogout } from 'react-google-login'
 import { useNavigate } from "react-router-dom";
 
 
 export default function LoginButtonGoogle() {
-
   const navigate = useNavigate();
 
   const responseGoogle = (response) => {
