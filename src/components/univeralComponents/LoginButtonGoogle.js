@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import GoogleLogin from 'react-google-login'
-import { FlowRight } from './Styles/Styled'
+import { FlowRight } from '../../Styles/Styled'
 import { GoogleLogout } from 'react-google-login'
 
 

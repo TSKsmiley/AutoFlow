@@ -1,5 +1,5 @@
-import Navbar from './Navbar';
-import MainScreen from './MainScreen';
+import Navbar from './components/univeralComponents/Navbar';
+import MainScreen from './components/landingPage/MainScreen';
 import GlobalStyles from './Styles/Global';
 
 function App() {
