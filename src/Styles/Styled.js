@@ -22,7 +22,12 @@ export const LoginButton = styled.button`
         color: #001F3F;
         background-color: #fff;
     }
-    `
+`
+export const LogoutButton = styled.button`
+    float: right;
+    cursor: pointer;
+    margin: 1.7em 1em auto auto;
+`
 
 export const NavButton = styled.button`
     color: white;
