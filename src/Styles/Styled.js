@@ -40,6 +40,7 @@ export const NavButton = styled.button`
 export const NavbarStyled = styled.div`
     background: linear-gradient(45deg, hsl(207.5, 84.8%, 51%), hsla(240, 84%, 62%, 1));
     height: 100px;
+    width: 100%;
 
 `
 

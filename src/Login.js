@@ -1,13 +1,13 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from './components/univeralComponents/Navbar'
 import { GlobalBackground } from './Styles/Global'
 
-export default function MainPanel() {
+export default function Login() {
   return (
     <>
+      <Navbar />
       <GlobalBackground>
-        <Navbar />
-        <h1>Din mor og din far</h1>
+        <h1>Login page here</h1>
       </GlobalBackground>
     </>
   )
