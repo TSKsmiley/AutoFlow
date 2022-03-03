@@ -15,16 +15,14 @@ export default function LogoutButtonGoogle() {
   }
 
   return (
-    <Fragment>
-      <LogoutButton>
-        <GoogleLogout
-          clientId="258375953305-7j1t10b7nlkrlgclfm94a86q55k3v5d9.apps.googleusercontent.com"
-          buttonText="Logout"
-          
-          onLogoutSuccess = {logout}>
-        </GoogleLogout>
-      </LogoutButton>
-    </Fragment>
+    <LogoutButton>
+      <GoogleLogout
+        clientId="258375953305-7j1t10b7nlkrlgclfm94a86q55k3v5d9.apps.googleusercontent.com"
+        buttonText="Logout"
+        
+        onLogoutSuccess = {logout}>
+      </GoogleLogout>
+    </LogoutButton>
   )
 }
 
