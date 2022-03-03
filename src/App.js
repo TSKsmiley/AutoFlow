@@ -1,14 +1,15 @@
-import Navbar from './components/univeralComponents/Navbar';
-import MainScreen from './components/landingPage/MainScreen';
-import { GlobalStyles } from './Styles/Global';
+import { Route, Routes } from 'react-router-dom';
+import LandingPage from './LandingPage';
+import Login from './Login';
+import MainPanel from './MainPanel';
 
 function App() {
   return (
-    <>
-      <GlobalStyles />
-      <Navbar />
-      <MainScreen/>
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />}/>
+      <Route path="login" element={<Login />} />
+      <Route path="panel" element={<MainPanel />} />
+   </Routes>
   )
 }
 

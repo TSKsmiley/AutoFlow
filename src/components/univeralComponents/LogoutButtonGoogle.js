@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { GoogleLogout } from 'react-google-login'
 import { useNavigate } from "react-router-dom";
+import { Context } from '../../Context';
 
 export default function LogoutButtonGoogle() {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(Context);
 
   const logout = () => {
+    setIsLoggedIn(false);
     navigate("/");
     console.log("Successfully logged out!");
   }

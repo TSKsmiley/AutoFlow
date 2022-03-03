@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import GoogleLogin from 'react-google-login'
 import { useNavigate } from "react-router-dom";
+import { Context } from '../../Context';
 
 
 export default function LoginButtonGoogle() {
   const navigate = useNavigate();
-  const [isLoggedIn, setSignedIn] = useState(false);
+  const { setIsLoggedIn } = useContext(Context);
 
   const responseGoogle = (response) => {
-    setSignedIn(true)
-    console.log(isLoggedIn);
-    // navigate("/panel");
+    setIsLoggedIn(true);
+    navigate("/panel");
     console.log("Successfully logged in!");
   }
 
