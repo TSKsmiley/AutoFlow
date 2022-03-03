@@ -22,3 +22,16 @@ export const GlobalBackground = createGlobalStyle`
     }
 
 `
+
+export const LoginBackground = createGlobalStyle`
+    body {
+        height: 100%;
+        background-image: url(../images/loginBackground.svg);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+`

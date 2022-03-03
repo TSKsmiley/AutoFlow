@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Login from './Login';
-import MainPanel from './components/webPanel/MainPanel';
+import MainPanel from './MainPanel';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 ReactDOM.render(

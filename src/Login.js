@@ -1,14 +1,19 @@
 import React from 'react'
-import Navbar from './components/univeralComponents/Navbar'
-import { GlobalBackground } from './Styles/Global'
+
+import LoginPanel from './components/loginPage/LoginPanel'
+import { LoginPageLogoText, LoginPanelNavBar } from './Styles/Styled'
+import { LoginBackground } from './Styles/Global'
+
 
 export default function Login() {
   return (
     <>
-      <Navbar />
-      <GlobalBackground>
-        <h1>Login page here</h1>
-      </GlobalBackground>
+      <LoginBackground/>
+        <LoginPanelNavBar>
+          <LoginPageLogoText className = "font-link">AutoFlow</LoginPageLogoText>
+        </LoginPanelNavBar>
+
+        <LoginPanel/>
     </>
   )
 }
