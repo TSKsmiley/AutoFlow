@@ -85,13 +85,48 @@ export const FlowRight = styled.div`
     cursor: pointer;
 `
 
+export const LoginPanelNavBar = styled.div`
+    width: 100%;
+    height: 12em;
+    padding-top: 0px;
+    margin-top: 0;
+`
+
 export const LoginPanelStyled = styled.div`
     width: 20em;
-    height: 40em;
+    height: 35em;
 
-    background-color: blue;
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
+    background: linear-gradient(45deg, hsl(190.5, 84.8%, 51%), hsla(240, 100%, 25%, 1));
+    
+    &.center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid #FFFF00;
+        padding: 10px;
+    }
+`
+
+export const LoginPageLogoText = styled.h1`
+    font-size: 72px;
+    margin-top: 0px;
+    color: #303030;
+    -webkit-text-stroke: .0085em black;
+    height: 90%; 
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+`
+export const LoginPageBody = styled.div`
+    width: 100%;
+    height: 100%;
+    
+    background-image: url(../images/workflowGuy.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    overflow: hidden;
+    background-position: center;
 `

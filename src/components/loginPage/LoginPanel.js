@@ -5,7 +5,7 @@ import { LoginPanelStyled } from '../../Styles/Styled'
 export default function LoginPanel() {
     return (
         <>
-            <LoginPanelStyled>
+            <LoginPanelStyled className='center'>
                 <div>
                     Hello World
                 </div>
