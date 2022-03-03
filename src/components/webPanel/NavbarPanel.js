@@ -9,7 +9,6 @@ export default function Navbar() {
     <Fragment>
         <NavbarPanelStyled>
             <Navbutton />
-            <LoginButtonGoogle />  
         </NavbarPanelStyled>
     </Fragment>
   )

@@ -1,14 +1,16 @@
 import React from 'react'
-import { LoginPanelStyled } from '../../Styles/Styled'
+import LoginButtonGoogle from '../univeralComponents/LoginButtonGoogle'
+import { LoginPanelStyled, LoginPanelHeader, FlowCenter } from '../../Styles/Styled'
 
 
 export default function LoginPanel() {
     return (
         <>
             <LoginPanelStyled className='center'>
-                <div>
-                    Hello World
-                </div>
+                <LoginPanelHeader className="font-link">Login</LoginPanelHeader>
+                <FlowCenter className='center'>
+                    <LoginButtonGoogle/>
+                </FlowCenter>
             </LoginPanelStyled>
         </>
     )

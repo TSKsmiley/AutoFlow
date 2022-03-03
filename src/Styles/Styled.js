@@ -86,6 +86,18 @@ export const FlowRight = styled.div`
     cursor: pointer;
 `
 
+export const FlowCenter = styled.div`
+    cursor: pointer;
+
+    &.center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+`
+
 export const LoginPanelNavBar = styled.div`
     width: 100%;
     height: 12em;
@@ -97,20 +109,30 @@ export const LoginPanelStyled = styled.div`
     width: 20em;
     height: 35em;
 
-    background: linear-gradient(45deg, hsl(190.5, 84.8%, 51%), hsla(240, 100%, 25%, 1));
+    background: white;
     
     &.center {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        border: 5px solid #FFFF00;
+        border: 3px solid lightgrey;
+        border-radius: 15px;
         padding: 10px;
+    }
+
+`
+export const LoginPanelHeader = styled.h1`
+    text-align: center;
+    font-size: 3em;
+
+    &.font-link {
+        font-family: 'Jost', sans-serif;
     }
 `
 
 export const LoginPageLogoText = styled.h1`
-    font-size: 72px;
+    font-size: 7em;
     margin-top: 0px;
     color: #303030;
     -webkit-text-stroke: .0085em black;
@@ -119,15 +141,9 @@ export const LoginPageLogoText = styled.h1`
     display:flex;
     align-items: center;
     justify-content: center;
-`
-export const LoginPageBody = styled.div`
-    width: 100%;
-    height: 100%;
-    
-    background-image: url(../images/workflowGuy.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    overflow: hidden;
-    background-position: center;
+    -webkit-text-stroke: 1px darkgrey;
+
+    &.font-link {
+        font-family: 'Jost', sans-serif, 0,900;
+    }
 `
