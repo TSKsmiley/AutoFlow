@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Login from './components/loginPage/Login';
+import Login from './Login';
 import MainPanel from './components/webPanel/MainPanel';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginPanel from './LoginPanel'
-import { LoginPageLogoText, LoginPanelNavBar, LoginPageBody } from '../../Styles/Styled'
+import LoginPanel from './components/loginPage/LoginPanel'
+import { LoginPageLogoText, LoginPanelNavBar, LoginPageBody } from './Styles/Styled'
 
 export default function Login() {
   return (
