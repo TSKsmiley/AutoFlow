@@ -84,3 +84,14 @@ export const FlowRight = styled.div`
     margin-bottom: 3px;
     cursor: pointer;
 `
+
+export const LoginPanelStyled = styled.div`
+    width: 20em;
+    height: 40em;
+
+    background-color: blue;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+`
