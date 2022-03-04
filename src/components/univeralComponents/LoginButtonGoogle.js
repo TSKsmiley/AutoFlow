@@ -27,6 +27,7 @@ export default function LoginButtonGoogle() {
       onFailure={responseGoogleFailed}
       cookiePolicy={"single_host_origin"}
       isSignedIn={true}
+      theme="dark"
     />
   );
 }
