@@ -1,8 +1,9 @@
-import React, { Fragment, useContext } from 'react'
-import { GoogleLogout } from 'react-google-login'
+import React, { useContext } from "react";
+import { GoogleLogout } from "react-google-login";
 import { useNavigate } from "react-router-dom";
-import { LogoutButton } from '../../Styles/Styled';
-import { Context } from '../../Context';
+import { LogoutButton } from "../../Styles/Styled";
+import { Context } from "../../Context";
+import configData from "../../config.json";
 
 export default function LogoutButtonGoogle() {
   const navigate = useNavigate();
@@ -12,17 +13,15 @@ export default function LogoutButtonGoogle() {
     setIsLoggedIn(false);
     navigate("/");
     console.log("Successfully logged out!");
-  }
+  };
 
   return (
     <LogoutButton>
       <GoogleLogout
-        clientId="258375953305-7j1t10b7nlkrlgclfm94a86q55k3v5d9.apps.googleusercontent.com"
+        clientId={configData.GOOGLE_TOKEN}
         buttonText="Logout"
-        
-        onLogoutSuccess = {logout}>
-      </GoogleLogout>
+        onLogoutSuccess={logout}
+      ></GoogleLogout>
     </LogoutButton>
-  )
+  );
 }
-
