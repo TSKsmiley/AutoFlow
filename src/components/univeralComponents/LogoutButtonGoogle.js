@@ -19,8 +19,9 @@ export default function LogoutButtonGoogle() {
     <LogoutButton>
       <GoogleLogout
         clientId={configData.GOOGLE_TOKEN}
-        buttonText="Logout"
+        buttonText="Logout with Google"
         onLogoutSuccess={logout}
+        theme="dark"
       ></GoogleLogout>
     </LogoutButton>
   );
