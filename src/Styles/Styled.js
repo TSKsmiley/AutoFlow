@@ -65,8 +65,7 @@ export const NavbarPanelTableStyled = styled.nav`
   border: 1px solid;
   display: grid;
   /* Ændre 3 tallet til antal kolloner i jeres navbar */
-  grid-template-columns: repeat(3
-    ,1fr);
+  grid-template-columns: repeat(3,1fr);
   position: relative;
   height: 100%;
   margin: auto;
