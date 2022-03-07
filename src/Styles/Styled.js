@@ -36,9 +36,9 @@ export const NavButton = styled.button`
   float: left;
   cursor: pointer;
   height: 50px;
-  width: 1.25em;
   margin-left: 0.35em;
   margin-top: 25px;
+  width: 5%;
 `;
 
 export const NavbarStyled = styled.div`
@@ -52,8 +52,22 @@ export const NavbarStyled = styled.div`
 `;
 
 export const NavbarPanelStyled = styled.div`
-  background-color: blue;
-  width: 150px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const NavbarPanelTableStyled = styled.table`
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid;
+  display: block;
+  position: relative;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+
 `;
 
 export const CenterText = styled.div`
@@ -104,13 +118,6 @@ export const FlowCenter = styled.div`
   }
 `;
 
-export const LoginPanelNavBar = styled.div`
-  width: 100%;
-  height: 12em;
-  padding-top: 0px;
-  margin-top: 0;
-`;
-
 export const LoginPanelStyled = styled.div`
   width: 20em;
   height: 35em;
@@ -133,22 +140,5 @@ export const LoginPanelHeader = styled.h1`
 
   &.font-link {
     font-family: "Jost", sans-serif;
-  }
-`;
-
-export const LoginPageLogoText = styled.h1`
-  font-size: 7em;
-  margin-top: 0px;
-  color: #303030;
-  -webkit-text-stroke: 0.0085em black;
-  height: 90%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-text-stroke: 1px darkgrey;
-
-  &.font-link {
-    font-family: "Jost", sans-serif, 0, 900;
   }
 `;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { NavButton } from '../../Styles/Styled'
+import { NavButton } from '../../../Styles/Styled'
 
 export default function Navbutton() {
   return (

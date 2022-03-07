@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginButtonGoogle from '../univeralComponents/LoginButtonGoogle'
+import LoginButtonGoogle from '../univeralComponents/NavbarComponents/LoginButtonGoogle'
 import { LoginPanelStyled, LoginPanelHeader, FlowCenter } from '../../Styles/Styled'
 
 
