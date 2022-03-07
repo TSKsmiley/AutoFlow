@@ -4,7 +4,7 @@ export const LoginButton = styled.button`
   float: right;
   cursor: pointer;
   width: 8em;
-  margin: 1.7em 1em auto auto;
+  margin: 0 1em auto auto;
 
   transition: all 0.5s ease;
   color: #fff;
@@ -37,11 +37,12 @@ export const NavButton = styled.button`
   cursor: pointer;
   height: 50px;
   margin-left: 0.35em;
-  margin-top: 25px;
   width: 5%;
 `;
 
 export const NavbarStyled = styled.div`
+  display: flex;
+  align-items: center;
   background: linear-gradient(
     45deg,
     hsl(207.5, 84.8%, 51%),
@@ -57,17 +58,19 @@ export const NavbarPanelStyled = styled.div`
   margin-right: auto;
 `;
 
-export const NavbarPanelTableStyled = styled.table`
+export const NavbarPanelTableStyled = styled.nav`
   width: 70%;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid;
-  display: block;
+  display: grid;
+  /* Ændre 3 tallet til antal kolloner i jeres navbar */
+  grid-template-columns: repeat(0,1fr);
+  grid-auto-flow: column;
   position: relative;
   height: 100%;
   margin: auto;
   text-align: center;
-
 `;
 
 export const CenterText = styled.div`
