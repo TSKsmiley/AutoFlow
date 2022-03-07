@@ -1,18 +1,23 @@
 import React, { Fragment, useContext } from 'react'
-import Navbutton from './Navbutton'
-import NavLoginButton from './NavLoginButton'
+import Navbutton from './NavbarComponents/Navbutton'
+import NavLoginButton from './NavbarComponents/NavLoginButton'
 import { NavbarStyled } from '../../Styles/Styled'
-import LogoutButtonGoogle from './LogoutButtonGoogle'
+import NavbarPanel from './NavbarComponents/NavbarPanel'
+import LogoutButtonGoogle from './NavbarComponents/LogoutButtonGoogle'
 import { Context } from '../../Context'
 
 
 export default function Navbar() {
-  const { isLoggedIn } = useContext(Context);
+  const { isLoggedIn, showPanelNav } = useContext(Context);
 
   return (
     <Fragment>
         <NavbarStyled>
             <Navbutton />
+            {showPanelNav 
+              ? <NavbarPanel/>
+              : <Fragment/>
+            }
             {isLoggedIn
               ? <LogoutButtonGoogle />
               : <NavLoginButton />

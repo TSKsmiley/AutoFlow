@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { GoogleLogout } from "react-google-login";
 import { useNavigate } from "react-router-dom";
-import { LogoutButton } from "../../Styles/Styled";
-import { Context } from "../../Context";
-import configData from "../../config.json";
+import { LogoutButton } from "../../../Styles/Styled";
+import { Context } from "../../../Context";
+import configData from "../../../config.json";
 
 export default function LogoutButtonGoogle() {
   const navigate = useNavigate();

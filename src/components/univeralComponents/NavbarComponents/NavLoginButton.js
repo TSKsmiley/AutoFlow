@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LoginButton } from '../../Styles/Styled'
+import { LoginButton } from '../../../Styles/Styled'
 
 export default function NavLoginButton() {
   return (

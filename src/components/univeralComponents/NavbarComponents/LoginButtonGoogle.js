@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../Context";
-import configData from "../../config.json";
+import { Context } from "../../../Context";
+import configData from "../../../config.json";
 
 export default function LoginButtonGoogle() {
   const navigate = useNavigate();
