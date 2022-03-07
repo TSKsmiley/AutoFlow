@@ -36,7 +36,6 @@ export const NavButton = styled.button`
   float: left;
   cursor: pointer;
   height: 50px;
-  width: 1.25em;
   margin-left: 0.35em;
   margin-top: 25px;
 `;
