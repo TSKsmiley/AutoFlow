@@ -12,6 +12,16 @@ export default function LoginButtonGoogle() {
     setIsLoggedIn(true);
     navigate("/panel");
     console.log("Successfully logged in!");
+    let id_token = response.getAuthResponse().id_token;
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      console.log("Signed in as: " + xhr.responseText);
+    };
+    xhr.send("idtoken=" + id_token);
   };
 
   const responseGoogleFailed = (response) => {

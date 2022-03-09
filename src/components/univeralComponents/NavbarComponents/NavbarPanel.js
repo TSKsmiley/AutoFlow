@@ -1,9 +1,8 @@
-import React, { Fragment, useContext } from "react";
+import React from "react";
 import {
   NavbarPanelTableStyled,
   NavbarPanelStyled,
 } from "../../../Styles/Styled";
-import { Context } from "../../../Context";
 
 export default function NavbarPanel() {
   return (
