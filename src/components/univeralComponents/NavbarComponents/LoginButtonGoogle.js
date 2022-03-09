@@ -17,11 +17,11 @@ export default function LoginButtonGoogle() {
     let xhr = new XMLHttpRequest();
 
     xhr.open("POST", "");
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
       console.log("Signed in as: " + xhr.responseText);
     };
-    xhr.send("idtoken=" + id_token);
+    xhr.send({ "token": id_token });
   };
 
   const responseGoogleFailed = (response) => {
