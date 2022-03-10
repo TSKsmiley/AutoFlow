@@ -147,26 +147,28 @@ export const LoginPanelHeader = styled.h1`
 `;
 
 export const Box = styled.div`
-  height: 8em;
-  width: 14em;
-  margin-top: 1em;
-  margin-left: 1em;
-  margin-bottom: 1em;
+  height: 6em;
+  max-height: 6em;
+  width: 20vw;
+  max-width: 14em;
   background-color: coral;
+  &:first-child{
+    margin-top: 1em;
+  }
 `;
 
 export const MainPanelGrid = styled.div`
-  width: 100%;
+  /* Ændre width */
+  width: 40%;
   display: grid;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
   /* Ændre 3 tallet til antal kolloner i jeres navbar */
-  grid-template-columns: repeat(auto-fill,1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  place-items: center;
   position: relative;
   height: 100%;
   text-align: center;
-
 `;
