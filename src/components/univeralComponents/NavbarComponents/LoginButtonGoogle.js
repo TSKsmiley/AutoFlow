@@ -21,7 +21,7 @@ export default function LoginButtonGoogle() {
     xhr.onload = function () {
       console.log("Signed in as: " + xhr.responseText);
     };
-    xhr.send({ "token": id_token });
+    xhr.send(JSON.parse(JSON.stringify(`{"token": "${id_token}"}`)));
   };
 
   const responseGoogleFailed = (response) => {
