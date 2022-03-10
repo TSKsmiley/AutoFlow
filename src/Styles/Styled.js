@@ -145,3 +145,28 @@ export const LoginPanelHeader = styled.h1`
     font-family: "Jost", sans-serif;
   }
 `;
+
+export const Box = styled.div`
+  height: 8em;
+  width: 14em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  background-color: coral;
+`;
+
+export const MainPanelGrid = styled.div`
+  width: 100%;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  /* Ændre 3 tallet til antal kolloner i jeres navbar */
+  grid-template-columns: repeat(auto-fill,1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  position: relative;
+  height: 100%;
+  text-align: center;
+
+`;
