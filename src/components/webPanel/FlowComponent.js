@@ -1,11 +1,12 @@
 import React from 'react'
 import { Box } from '../../Styles/Styled'
+import ToggleableButton from '../univeralComponents/ToggleableButton'
 
 export default function FlowComponent() {
   return (
     <div>
         <Box>
-            
+            <ToggleableButton />
         </Box>
     </div>
   )
