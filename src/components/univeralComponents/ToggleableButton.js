@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function ToggleableButton( elFunction ) {
-  const borderRadiusStyle = { borderRadius: 2 }
+export default function ToggleableButton( elFunction, toggled ) {
 
   return (
     <h1>E</h1>
