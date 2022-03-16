@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MainPanelGrid } from '../../Styles/Styled'
+import { AddButton, MainPanelGrid } from '../../Styles/Styled'
 import FlowComponent from './FlowComponent'
 import { Box } from '../../Styles/Styled';
 
@@ -42,10 +42,8 @@ export default function FlowsPanel() {
           <FlowComponent from={element.from} to={element.to} key={i}/>
         ))}
         
-        <button type='button' onClick={handleOnClick}>
-          <Box>
-          </Box>
-        </button>
+        <AddButton type='button' onClick={handleOnClick}>
+        </AddButton>
       
 
     </MainPanelGrid>
