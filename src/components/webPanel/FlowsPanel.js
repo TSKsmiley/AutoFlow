@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AddButton, MainPanelGrid } from '../../Styles/Styled'
 import FlowComponent from './FlowComponent'
-import { Box } from '../../Styles/Styled';
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState(null)
     const api_url = "https://devapi.aau-sw.dk/flows/" // maybe not right url
+
+    const navigate = useNavigate();
     
     const defaultFlows = {
       flows: []
     }
 
     useEffect(() => {
-      setFlows(defaultFlows.flows)
-      return
+
       let data = fetch(api_url)
       .then(result => {
+        if(!result.ok){
+          setFlows(defaultFlows.flows)
+          throw new Error('Did not connect to the server!')
+        }
         result.json()
       })
       setFlows(data.flows)
@@ -27,7 +32,8 @@ export default function FlowsPanel() {
 
     function handleOnClick(){
       console.log(flows)
-      setFlows([...flows, {}])
+      navigate("/createPanel")
+      //setFlows([...flows, {}])
     }
     
     

@@ -14,7 +14,7 @@ export default function Navbutton() {
   }
 
   return (
-    <Link to= {returnLinkTo}>
+    <Link to= {returnLinkTo} replace>
         <NavButton type="button">AutoFlow</NavButton>
     </Link>
   )
