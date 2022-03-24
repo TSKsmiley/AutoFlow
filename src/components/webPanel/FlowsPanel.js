@@ -16,7 +16,11 @@ export default function FlowsPanel() {
 
     useEffect(() => {
 
-      let data = fetch(api_url)
+      let data = fetch(api_url, {
+        headers: {
+          'Authentication': `${localStorage.getItem('token')}`
+        }
+      })
       .then(result => {
         if(!result.ok){
           setFlows(defaultFlows.flows)

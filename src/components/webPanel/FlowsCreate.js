@@ -17,7 +17,8 @@ export default function FlowsCreate() {
             cache: 'no-cache',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authentication': `${localStorage.getItem('token')}`
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
