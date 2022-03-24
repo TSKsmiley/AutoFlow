@@ -1,3 +1,4 @@
 {
-    "GOOGLE_TOKEN": "1234567890-ab1cd2ef3gh4jk5lm6no7pq8.apps.googleusercontent.com"
+    "GOOGLE_TOKEN": "1234567890-ab1cd2ef3gh4jk5lm6no7pq8.apps.googleusercontent.com",
+    "API": "https://devapi.aau-sw.dk"
 }

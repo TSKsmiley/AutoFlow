@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AddButton, MainPanelGrid } from '../../Styles/Styled'
 import FlowComponent from './FlowComponent'
+import configData from "../../config.json";
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState(null)
-    const api_url = "https://devapi.aau-sw.dk/flows/" // maybe not right url
+    const api_url = `${configData.API}/flows/` // maybe not right url
 
     const navigate = useNavigate();
     
