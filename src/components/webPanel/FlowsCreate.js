@@ -10,7 +10,7 @@ export default function FlowsCreate() {
 
     const navigate = useNavigate();
 
-    async function sendData(data = {}, url = '/flows/create') {
+    async function sendData(data = {}, url = '/flow/info') {
 
       const response = await fetch(`${configData.API}${url}`, {
         method: 'POST',
@@ -19,13 +19,14 @@ export default function FlowsCreate() {
         headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Authentication': `${sessionStorage.getItem('token')}`
+              'Authorization': `${sessionStorage.getItem('token')}`
           },
           redirect: 'follow',
           referrerPolicy: 'no-referrer',
 
           body: JSON.stringify(data)
         })
+        console.log(response)
         if(response.status === 200){
           return response.json()
         }

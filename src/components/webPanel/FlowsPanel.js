@@ -6,7 +6,7 @@ import configData from "../../config.json";
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState(null)
-    const api_url = `${configData.API}/flows/` // maybe not right url
+    const api_url = `${configData.API}/flow/change` // maybe not right url
 
     const navigate = useNavigate();
     
@@ -14,37 +14,38 @@ export default function FlowsPanel() {
       flows: []
     }
 
-    useEffect(() => {
-
-      let data = fetch(api_url, {
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const fetchData = async () => {
+      let data = await fetch(api_url, {
+        method: 'GET',
         headers: {
-          'Authentication': `${sessionStorage.getItem('token')}`
+          'Authorization': `${sessionStorage.getItem('token')}`
         }
       })
-      .then(result => {
+      .then(async (result) => {
         if(!result.ok){
-          setFlows(defaultFlows.flows)
-          throw new Error('Did not connect to the server!')
-        }
-        result.json()
+        console.log("Not ok")
+        setFlows(defaultFlows.flows)
+        throw new Error('Did not connect to the server!')
+      }
+      console.log(await result.json())
+      //setFlows(result) 
       })
-      setFlows(data.flows)
-      
-    }, [])
+
+    }
+    fetchData()
+  }, [api_url, defaultFlows.flows, flows])
 
 
 
     function handleOnClick(){
-      console.log(flows)
       navigate("/createPanel")
       //setFlows([...flows, {}])
     }
-    
-  console.log(defaultFlows.flows.length)
 
   return (
     <MainPanelGrid>
-      {console.log(flows)}
         { flows?.map((element, i) => (
           <FlowComponent from={element.from} to={element.to} key={i}/>
         ))}

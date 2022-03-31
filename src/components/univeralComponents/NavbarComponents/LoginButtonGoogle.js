@@ -15,14 +15,6 @@ export default function LoginButtonGoogle() {
     let id_token = response.getAuthResponse().id_token;
     sessionStorage.setItem('token', `${id_token}`)
 
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("POST", `${configData.API}/routes/webpanelHandler/`);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onload = function () {
-      console.log("Signed in as: " + xhr.responseText);
-    };
-    xhr.send(JSON.parse(JSON.stringify(`{"token": "${id_token}"}`)));
   };
 
   const responseGoogleFailed = (response) => {
