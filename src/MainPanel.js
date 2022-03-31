@@ -7,7 +7,7 @@ import FlowsPanel from "./components/webPanel/FlowsPanel";
 
 export default function MainPanel() {
   const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
-  const [__isMounted, setMounted] = useState(true);
+  const [__isMounted ] = useState(true);
 
   const navigate = useNavigate();
 
@@ -16,7 +16,6 @@ export default function MainPanel() {
         navigate("/");
     }
     
-    return () => setMounted(false);
   }, []);
 
   useEffect(() => {
