@@ -10,7 +10,7 @@ export default function FlowsCreate() {
 
     const navigate = useNavigate();
 
-    async function sendData(data = {}, url = '/flow/info') {
+    async function sendData(data = {}, url = '/flow/change') {
 
       const response = await fetch(`${configData.API}${url}`, {
         method: 'POST',
