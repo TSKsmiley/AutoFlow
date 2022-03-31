@@ -19,7 +19,8 @@ export default function FlowsCreate() {
         headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Authorization': `${sessionStorage.getItem('token')}`
+              'Authorization': `${sessionStorage.getItem('token')}`,
+              'Access-Control-Allow-Origin': '*'
           },
           redirect: 'follow',
           referrerPolicy: 'no-referrer',

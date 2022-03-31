@@ -39,8 +39,6 @@ export default function FlowsPanel() {
     fetchData()
   }, [])
 
-
-
     function handleOnClick(){
       navigate("/createPanel")
       //setFlows([...flows, {}])
