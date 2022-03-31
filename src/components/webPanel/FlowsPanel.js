@@ -6,7 +6,7 @@ import configData from "../../config.json";
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState([])
-    const api_url = `${configData.API}/flow/change` // maybe not right url
+    const api_url = `${configData.API}/flow` // maybe not right url
 
     const navigate = useNavigate();
     
@@ -15,6 +15,7 @@ export default function FlowsPanel() {
     }
 
   useEffect(() => {
+    let isSubbed = true;
     const fetchData = async () => {
       await fetch(api_url, {
         method: 'GET',
@@ -23,20 +24,25 @@ export default function FlowsPanel() {
         }
       })
       .then(async (result) => {
-        if(!result.ok){
+        if(!result.ok && isSubbed){
           console.log("Not ok")
           setFlows(defaultFlows.flows)
           throw new Error('Did not connect to the server!')
         }
         let res = await result.json()
       console.log(res)
-
-      setFlows(res) 
+      
+      if(isSubbed){
+        setFlows(res)
+      } 
 
       })
 
     }
     fetchData()
+    return () => {
+      isSubbed = false;
+    }
   }, [])
 
     function handleOnClick(){

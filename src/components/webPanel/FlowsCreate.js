@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom';
 import { CreatePanelBox } from '../../Styles/Styled';
 import configData from "../../config.json";
+import FlowInfo from '../../Models/Flowinfo';
 
 export default function FlowsCreate() {
     const [incomming, setIncomming] = useState('');
     const [outgoing, setOutgoing] = useState('');
+    const api_url = `${configData.API}/flow`
 
     const navigate = useNavigate();
 
-    async function sendData(data = {}, url = '/flow/change') {
+    async function sendData(data = {}, url = '/flow') {
 
       const response = await fetch(`${configData.API}${url}`, {
         method: 'POST',
@@ -29,7 +31,7 @@ export default function FlowsCreate() {
         })
         console.log(response)
         if(response.status === 200){
-          return response.json()
+          return await response.json()
         }
         console.log("Not ok")
     }
@@ -43,12 +45,34 @@ export default function FlowsCreate() {
     }
 
     function PostData(){
-      sendData({
-        "Incomming": {incomming},
-        "Outgoing": {outgoing},
-      })
+      let res = sendData(
+        FlowInfo(incomming, [], outgoing, "sendMessage", ["Geiki"], ["Pepe laugh", "https://i.imgflip.com/1tecgr.jpg"], ["https://discord.com/api/webhooks/950657239482523699/M8oItZHSTnDzm_z5ZiexrkXWzcryOJzCJUG72sGxWLk3erQQRx__dO2VsEpdUwyAyOLP"])
+      )
+      console.log(res)
       navigate("/panel")
     }
+
+    useEffect(() => {
+      const fetchData = async () => {
+        await fetch(api_url, {
+          method: 'GET',
+          headers: {
+            'Authorization': `${sessionStorage.getItem('token')}`
+          }
+        })
+        .then(async (result) => {
+          if(!result.ok){
+            console.log("Not ok")
+            throw new Error('Did not connect to the server!')
+          }
+          let res = await result.json()
+        console.log(res)
+  
+        })
+  
+      }
+      fetchData()
+    }, []);
 
   return (
     <>
@@ -56,9 +80,9 @@ export default function FlowsCreate() {
       <Dropdown
         label="Incomming" 
         options={[
-          { label: 'Github', value: 'githubinc'},
-          { label: 'Slack message', value: 'slackmessageinc'},
-          { label: 'Time Based', value: 'timer'}
+          { label: 'Github', value: 'Github'},
+          { label: 'Slack message', value: 'Slack'},
+          { label: 'Time Based', value: 'Timer'}
         ]}
         value={incomming}
         onChange={handleIncommingChange}
@@ -68,9 +92,9 @@ export default function FlowsCreate() {
       <Dropdown
         label="Incomming" 
         options={[
-          { label: 'Github', value: 'githubout'},
-          { label: 'Slack message', value: 'slackmessageout'},
-          { label: 'Discord message', value: 'discout'}
+          { label: 'Mail', value: 'Mail'},
+          { label: 'Slack message', value: 'Slack'},
+          { label: 'Discord message', value: 'Discord'}
         ]}
         value={outgoing}
         onChange={handleOutgoingChange}
