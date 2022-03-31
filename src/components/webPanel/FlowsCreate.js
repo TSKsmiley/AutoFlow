@@ -11,21 +11,25 @@ export default function FlowsCreate() {
     const navigate = useNavigate();
 
     async function sendData(data = {}, url = '/flows/create') {
-        const response = await fetch(`${configData.API}${url}`, {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authentication': `${localStorage.getItem('token')}`
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
 
-            body: JSON.stringify(data)
+      const response = await fetch(`${configData.API}${url}`, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authentication': `${sessionStorage.getItem('token')}`
+          },
+          redirect: 'follow',
+          referrerPolicy: 'no-referrer',
+
+          body: JSON.stringify(data)
         })
-        return response.json()
+        if(response.status === 200){
+          return response.json()
+        }
+        console.log("Not ok")
     }
 
     const handleIncommingChange = (e) => {

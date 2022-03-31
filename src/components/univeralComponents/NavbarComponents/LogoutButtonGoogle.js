@@ -11,7 +11,7 @@ export default function LogoutButtonGoogle() {
 
   const logout = () => {
     setIsLoggedIn(false);
-    localStorage.clear()
+    sessionStorage.clear();
     navigate("/");
     console.log("Successfully logged out!");
   };

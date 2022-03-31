@@ -13,7 +13,7 @@ export default function LoginButtonGoogle() {
     navigate("/panel");
     console.log("Successfully logged in!");
     let id_token = response.getAuthResponse().id_token;
-    localStorage.setItem('token', `${id_token}`)
+    sessionStorage.setItem('token', `${id_token}`)
 
     let xhr = new XMLHttpRequest();
 

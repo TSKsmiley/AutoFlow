@@ -18,7 +18,7 @@ export default function FlowsPanel() {
 
       let data = fetch(api_url, {
         headers: {
-          'Authentication': `${localStorage.getItem('token')}`
+          'Authentication': `${sessionStorage.getItem('token')}`
         }
       })
       .then(result => {
@@ -29,7 +29,6 @@ export default function FlowsPanel() {
         result.json()
       })
       setFlows(data.flows)
-      return
       
     }, [])
 
@@ -40,9 +39,6 @@ export default function FlowsPanel() {
       navigate("/createPanel")
       //setFlows([...flows, {}])
     }
-    
-    
-    
     
   console.log(defaultFlows.flows.length)
 
