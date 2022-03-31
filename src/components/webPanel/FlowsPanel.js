@@ -1,43 +1,51 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AddButton, MainPanelGrid } from '../../Styles/Styled'
 import FlowComponent from './FlowComponent'
-import { Box } from '../../Styles/Styled';
+import configData from "../../config.json";
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState(null)
-    const api_url = "https://devapi.aau-sw.dk/flows/" // maybe not right url
+    const api_url = `${configData.API}/flow/change` // maybe not right url
+
+    const navigate = useNavigate();
     
     const defaultFlows = {
       flows: []
     }
 
-    useEffect(() => {
-      setFlows(defaultFlows.flows)
-      return
-      let data = fetch(api_url)
-      .then(result => {
-        result.json()
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const fetchData = async () => {
+      let data = await fetch(api_url, {
+        method: 'GET',
+        headers: {
+          'Authorization': `${sessionStorage.getItem('token')}`
+        }
       })
-      setFlows(data.flows)
-      return
-      
-    }, [])
+      .then(async (result) => {
+        if(!result.ok){
+        console.log("Not ok")
+        setFlows(defaultFlows.flows)
+        throw new Error('Did not connect to the server!')
+      }
+      console.log(await result.json())
+      //setFlows(result) 
+      })
+
+    }
+    fetchData()
+  }, [api_url, defaultFlows.flows, flows])
 
 
 
     function handleOnClick(){
-      console.log(flows)
-      setFlows([...flows, {}])
+      navigate("/createPanel")
+      //setFlows([...flows, {}])
     }
-    
-    
-    
-    
-  console.log(defaultFlows.flows.length)
 
   return (
     <MainPanelGrid>
-      {console.log(flows)}
         { flows?.map((element, i) => (
           <FlowComponent from={element.from} to={element.to} key={i}/>
         ))}

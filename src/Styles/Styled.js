@@ -207,3 +207,12 @@ export const MainPanelGrid = styled.div`
   height: 100%;
   text-align: center;
 `;
+
+export const CreatePanelBox = styled.div`
+  margin-top: 5%;
+  margin-left: 40%;
+  margin-right: 40%;
+  justify-content: center;
+  height: 50%;
+
+`
