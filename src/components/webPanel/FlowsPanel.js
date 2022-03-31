@@ -5,7 +5,9 @@ import FlowComponent from './FlowComponent'
 import configData from "../../config.json";
 
 export default function FlowsPanel() {
+
     const [flows, setFlows] = useState([])
+
     const api_url = `${configData.API}/flow/change` // maybe not right url
 
     const navigate = useNavigate();
@@ -15,8 +17,10 @@ export default function FlowsPanel() {
     }
 
   useEffect(() => {
+
     const fetchData = async () => {
       await fetch(api_url, {
+
         method: 'GET',
         headers: {
           'Authorization': `${sessionStorage.getItem('token')}`
