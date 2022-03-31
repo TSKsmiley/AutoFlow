@@ -10,7 +10,6 @@ export default function FlowsCreate() {
 
     const navigate = useNavigate();
 
-
     async function sendData(data = {}, url = '/flow/change') {
 
       const response = await fetch(`${configData.API}${url}`, {
@@ -20,7 +19,9 @@ export default function FlowsCreate() {
         headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Authorization': `${sessionStorage.getItem('token')}`
+              'Authorization': `${sessionStorage.getItem('token')}`,
+              'Access-Control-Allow-Origin': '*'
+
           },
           redirect: 'follow',
           referrerPolicy: 'no-referrer',
