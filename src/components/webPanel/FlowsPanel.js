@@ -5,10 +5,9 @@ import FlowComponent from './FlowComponent'
 import configData from "../../config.json";
 
 export default function FlowsPanel() {
-
     const [flows, setFlows] = useState([])
-
-    const api_url = `${configData.API}/flow/change` // maybe not right url
+    const [update, setUpdate] = useState(1)
+    const api_url = `${configData.API}/flow` // maybe not right url
 
     const navigate = useNavigate();
     
@@ -17,31 +16,39 @@ export default function FlowsPanel() {
     }
 
   useEffect(() => {
+    let isSubbed = true;
 
     const fetchData = async () => {
       await fetch(api_url, {
-
         method: 'GET',
         headers: {
           'Authorization': `${sessionStorage.getItem('token')}`
         }
       })
       .then(async (result) => {
-        if(!result.ok){
+        if(!result.ok && isSubbed){
           console.log("Not ok")
           setFlows(defaultFlows.flows)
           throw new Error('Did not connect to the server!')
         }
         let res = await result.json()
-      console.log(res)
-
-      setFlows(res) 
+        
+      if(isSubbed){
+        setFlows(res)
+      } 
 
       })
 
     }
-    fetchData()
-  }, [])
+    const interval = setInterval(() => {
+      fetchData()
+    }, 1000)
+
+    return () => {
+      isSubbed = false;
+      clearInterval(interval)
+    }
+  }, [update])
 
     function handleOnClick(){
       navigate("/createPanel")
@@ -51,7 +58,7 @@ export default function FlowsPanel() {
   return (
     <MainPanelGrid>
         { flows?.map((element, i) => (
-          <FlowComponent from={element.from} to={element.to} key={i}/>
+          <FlowComponent from={element.platform} to={element.actions[0].name} id={element._id} key={i} setUpdate={setUpdate} update={update}/>
         ))}
         
         <AddButton type='button' onClick={handleOnClick}>
