@@ -31,7 +31,7 @@ export default function FlowsPanel() {
         }
         let res = await result.json()
       console.log(res)
-      
+        
       if(isSubbed){
         setFlows(res)
       } 
