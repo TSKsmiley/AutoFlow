@@ -119,17 +119,17 @@ export default function FlowsCreate() {
       />
       <button type="submit" onClick={PostData}>Create Flow</button>
     </CreatePanelBox>
-    
+
     <h3>Action</h3>
-    <EditBox route={setAction}/>
+    <EditBox route={setAction} isArray={false}/>
     <h3>Content required</h3>
-    <EditBox route={setContReq}/>
+    <EditBox route={setContReq} isArray={true}/>
     <h3>Content optional</h3>
-    <EditBox route={setContOpt}/>
+    <EditBox route={setContOpt} isArray={true}/>
     <h3>Options required</h3>
-    <EditBox route={setOptReq}/>
+    <EditBox route={setOptReq} isArray={true}/>
     <h3>Options optional</h3>
-    <EditBox route={setOptOpt}/>
+    <EditBox route={setOptOpt} isArray={true}/>
     </>
   )
 }
