@@ -53,7 +53,11 @@ export default function FlowsCreate() {
     }
 
     useEffect(() => {
+      let isSubbed = true
+
       const fetchData = async () => {
+        if(!isSubbed) return
+
         await fetch(api_url, {
           method: 'GET',
           headers: {
@@ -71,7 +75,10 @@ export default function FlowsCreate() {
         })
   
       }
-      fetchData()
+      if(isSubbed){
+        fetchData()
+      }
+      return () => isSubbed = false
     }, []);
 
   return (
