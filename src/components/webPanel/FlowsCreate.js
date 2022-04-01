@@ -66,7 +66,7 @@ export default function FlowsCreate() {
 
       const fetchData = async () => {
         if(!isSubbed) return
-
+        
         await fetch(api_url, {
           method: 'GET',
           headers: {
@@ -89,6 +89,7 @@ export default function FlowsCreate() {
       }
       return () => isSubbed = false
     }, []);
+
 
   return (
     <>

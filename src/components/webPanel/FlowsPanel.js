@@ -17,6 +17,7 @@ export default function FlowsPanel() {
 
   useEffect(() => {
     let isSubbed = true;
+
     const fetchData = async () => {
       await fetch(api_url, {
         method: 'GET',
@@ -31,7 +32,6 @@ export default function FlowsPanel() {
           throw new Error('Did not connect to the server!')
         }
         let res = await result.json()
-      console.log(res)
         
       if(isSubbed){
         setFlows(res)
@@ -40,9 +40,13 @@ export default function FlowsPanel() {
       })
 
     }
-    fetchData()
+    const interval = setInterval(() => {
+      fetchData()
+    }, 1000)
+
     return () => {
       isSubbed = false;
+      clearInterval(interval)
     }
   }, [update])
 
