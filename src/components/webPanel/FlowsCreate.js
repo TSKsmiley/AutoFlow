@@ -6,6 +6,7 @@ import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
 import EditBox from '../univeralComponents/Editbox';
 
+
 export default function FlowsCreate() {
     const [incomming, setIncomming] = useState('');
     const [outgoing, setOutgoing] = useState('');
@@ -19,9 +20,8 @@ export default function FlowsCreate() {
 
     const navigate = useNavigate();
 
-
-
     async function sendData(data = {}, url = '/flow') {
+
 
       const response = await fetch(`${configData.API}${url}`, {
         method: 'POST',
@@ -90,7 +90,6 @@ export default function FlowsCreate() {
       return () => isSubbed = false
     }, []);
 
-
   return (
     <>
     <CreatePanelBox>
@@ -112,6 +111,7 @@ export default function FlowsCreate() {
           { label: 'Mail', value: 'Mail'},
           { label: 'Slack message', value: 'Slack'},
           { label: 'Discord message', value: 'Discord'}
+
         ]}
         value={outgoing}
         onChange={handleOutgoingChange}
@@ -119,7 +119,6 @@ export default function FlowsCreate() {
       />
       <button type="submit" onClick={PostData}>Create Flow</button>
     </CreatePanelBox>
-    
     <h3>Action</h3>
     <EditBox route={setAction}/>
     <h3>Content required</h3>
