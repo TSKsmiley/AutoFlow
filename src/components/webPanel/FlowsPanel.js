@@ -6,6 +6,7 @@ import configData from "../../config.json";
 
 export default function FlowsPanel() {
     const [flows, setFlows] = useState([])
+    const [update, setUpdate] = useState(1)
     const api_url = `${configData.API}/flow` // maybe not right url
 
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ export default function FlowsPanel() {
     return () => {
       isSubbed = false;
     }
-  }, [])
+  }, [update])
 
     function handleOnClick(){
       navigate("/createPanel")
@@ -53,7 +54,7 @@ export default function FlowsPanel() {
   return (
     <MainPanelGrid>
         { flows?.map((element, i) => (
-          <FlowComponent from={element.from} to={element.to} key={i}/>
+          <FlowComponent from={element.platform} to={element.actions[0].name} id={element._id} key={i} setUpdate={setUpdate} update={update}/>
         ))}
         
         <AddButton type='button' onClick={handleOnClick}>

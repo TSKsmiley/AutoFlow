@@ -1,12 +1,39 @@
 import React from 'react'
-import { Box } from '../../Styles/Styled'
-import ToggleableButton from '../univeralComponents/ToggleableButton'
+import { Box, CopyButton, DeleteButton, LeftText } from '../../Styles/Styled'
+import configData from '../../config'
 
-export default function FlowComponent( from, to, toggled = false ) {
+export default function FlowComponent(props) {
+  let routes = `${configData.API}/actions`
+  function CopyToClip(){
+    navigator.clipboard.writeText(`${routes}${props.from}/${props.id}`)
+  }
+
+  async function DeleteFlow(){
+    console.log("Deleting")
+    fetch(`${configData.API}/flow`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${sessionStorage.getItem('token')}`
+      },
+
+      body: JSON.stringify({
+        "flowToken": props.id
+      })
+    })
+
+    props.setUpdate(props.update + 1)
+  }
+
+
   return (
     <div>
         <Box>
-            <ToggleableButton toggled={toggled}/>
+            <LeftText>{props.from} &#8594;</LeftText>
+            <LeftText>{props.to}</LeftText>
+            <DeleteButton type='button' onClick={DeleteFlow}></DeleteButton>
+            <CopyButton type="button" onClick={CopyToClip}>Copy To Clipboard</CopyButton>
         </Box>
     </div>
   )

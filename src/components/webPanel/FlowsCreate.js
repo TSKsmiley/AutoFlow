@@ -98,7 +98,6 @@ export default function FlowsCreate() {
         options={[
           { label: 'Github', value: 'Github'},
           { label: 'Slack message', value: 'Slack'},
-          { label: 'Time Based', value: 'Timer'}
         ]}
         value={incomming}
         onChange={handleIncommingChange}
