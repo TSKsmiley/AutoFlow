@@ -16,6 +16,7 @@ export default function FlowsCreate() {
     const [optionsOptional, setOptOpt] = useState([]);
     const [optionsRequired, setOptReq] = useState([]);
     const [routes, setRoutes] = useState([]);
+    const [actions, setActions] = useState([]);
 
     const api_url = `${configData.API}/flow`
 
@@ -82,6 +83,7 @@ export default function FlowsCreate() {
           let res = await result.json()
           console.log(res)
           CreateRoutes(res.routes)
+          CreateActions(res.actions)
         })
 
       }
@@ -95,12 +97,24 @@ export default function FlowsCreate() {
       let incomRoutes = []
       for(let i = 0; i < route.length; i++){
         console.log(route[i])
-        incomRoutes.push({label: route[i].name, value: route[i].name});
+        incomRoutes.push({label: route[i].platform, value: route[i].platform});
       }
 
       
       console.log(incomRoutes);
       setRoutes(incomRoutes)
+    }
+
+    function CreateActions(actionArray = []) {
+      let incomActions = []
+      for(let i = 0; i < actionArray.length; i++){
+        console.log(actionArray[i])
+        incomActions.push({label: actionArray[i].name, value: actionArray[i].name});
+      }
+
+      
+      console.log(incomActions);
+      setActions(incomActions);
     }
 
 
@@ -109,9 +123,7 @@ export default function FlowsCreate() {
     <CreatePanelBox>
       <Dropdown
         label="Incomming" 
-        options={[
-          {label: 'Gaming', value: 'Gayymer'}
-        ]}
+        options={routes}
         value={incomming}
         onChange={handleIncommingChange}
         placeholder="Select an incomming point"
@@ -119,12 +131,7 @@ export default function FlowsCreate() {
 
       <Dropdown
         label="Incomming" 
-        options={[
-          { label: 'Mail', value: 'Mail'},
-          { label: 'Slack message', value: 'Slack'},
-          { label: 'Discord message', value: 'Discord'}
-
-        ]}
+        options={actions}
         value={outgoing}
         onChange={handleOutgoingChange}
         placeholder="Select an outgoing point"
