@@ -15,6 +15,7 @@ export default function FlowsCreate() {
     const [contentOptional, setContOpt] = useState([]);
     const [optionsOptional, setOptOpt] = useState([]);
     const [optionsRequired, setOptReq] = useState([]);
+    const [routes, setRoutes] = useState([]);
 
     const api_url = `${configData.API}/flow`
 
@@ -67,7 +68,7 @@ export default function FlowsCreate() {
       const fetchData = async () => {
         if(!isSubbed) return
         
-        await fetch(api_url, {
+        await fetch(`${api_url}/info`, {
           method: 'GET',
           headers: {
             'Authorization': `${sessionStorage.getItem('token')}`
@@ -80,7 +81,7 @@ export default function FlowsCreate() {
           }
           let res = await result.json()
           console.log(res)
-  
+          CreateRoutes(res.routes)
         })
 
       }
@@ -90,6 +91,18 @@ export default function FlowsCreate() {
       return () => isSubbed = false
     }, []);
 
+    function CreateRoutes(route = []) {
+      let incomRoutes = []
+      for(let i = 0; i < route.length; i++){
+        console.log(route[i])
+        incomRoutes.push({label: route[i].name, value: route[i].name});
+      }
+
+      
+      console.log(incomRoutes);
+      setRoutes(incomRoutes)
+    }
+
 
   return (
     <>
@@ -97,8 +110,7 @@ export default function FlowsCreate() {
       <Dropdown
         label="Incomming" 
         options={[
-          { label: 'Github', value: 'Github'},
-          { label: 'Slack message', value: 'Slack'},
+          {label: 'Gaming', value: 'Gayymer'}
         ]}
         value={incomming}
         onChange={handleIncommingChange}
