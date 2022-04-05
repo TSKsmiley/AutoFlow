@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom';
-import { CreatePanelBox } from '../../Styles/Styled';
+import { CreateFlowGrid, CreatePanelBox } from '../../Styles/Styled';
 import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
 import EditBox from '../univeralComponents/Editbox';
 
 
 export default function FlowsCreate() {
+  // useReducer
     const [incomming, setIncomming] = useState('');
     const [outgoing, setOutgoing] = useState('');
     const [action, setAction] = useState('');
@@ -70,7 +71,6 @@ export default function FlowsCreate() {
     }
 
     const handleActionChange = (e) => {
-      console.log(e.value)
       setAction(e.value)
     }
 
@@ -155,23 +155,33 @@ export default function FlowsCreate() {
         onChange={handleOutgoingChange}
         placeholder="Select an outgoing point"
       />
-      <button type="submit" onClick={PostData}>Create Flow</button>
-    </CreatePanelBox>
-    <Dropdown
+      <Dropdown
         label="Action" 
         options={currentAction}
         value={action}
         onChange={handleActionChange}
         placeholder="Select an action"
       />
-    <h3>Content required</h3>
-    <EditBox route={setContReq} isArray={true}/>
-    <h3>Content optional</h3>
-    <EditBox route={setContOpt} isArray={true}/>
-    <h3>Options required</h3>
-    <EditBox route={setOptReq} isArray={true}/>
-    <h3>Options optional</h3>
-    <EditBox route={setOptOpt} isArray={true}/>
+      <button type="submit" onClick={PostData}>Create Flow</button>
+    </CreatePanelBox>
+    <CreateFlowGrid>
+    <div>
+      <h3>Content required</h3>
+      <EditBox route={setContReq} isArray={true}/>
+    </div>
+    <div>
+      <h3>Content optional</h3>
+      <EditBox route={setContOpt} isArray={true}/>
+    </div>
+    <div>
+      <h3>Options required</h3>
+      <EditBox route={setOptReq} isArray={true}/>
+    </div>
+    <div>
+      <h3>Options optional</h3>
+      <EditBox route={setOptOpt} isArray={true}/>
+    </div>
+    </CreateFlowGrid>
     </>
   )
 }
