@@ -17,6 +17,8 @@ export default function FlowsCreate() {
     const [optionsRequired, setOptReq] = useState([]);
     const [routes, setRoutes] = useState([]);
     const [actions, setActions] = useState([]);
+    const [actionArray, setActionArray] = useState([]);
+    const [currentAction, setCurrentAction] = useState([]);
 
     const api_url = `${configData.API}/flow`
 
@@ -52,7 +54,24 @@ export default function FlowsCreate() {
     }
 
     const handleOutgoingChange = (e) => {
+      let incArray = []
+      console.log(actionArray)
+      let flag = 0
+      for(let i = 0; i < actionArray.length || flag === 0; i++){
+        if(actionArray[i].name === e.value){
+          flag = 1
+          for(let j = 0; j < actionArray[i].executeAction.length; j++){
+            incArray.push({label: actionArray[i].executeAction[j], value: actionArray[i].executeAction[j]})
+          }
+        }
+      }
+      setCurrentAction(incArray)
       setOutgoing(e.value)
+    }
+
+    const handleActionChange = (e) => {
+      console.log(e.value)
+      setAction(e.value)
     }
 
     function PostData(){
@@ -83,6 +102,7 @@ export default function FlowsCreate() {
           let res = await result.json()
           console.log(res)
           CreateRoutes(res.routes)
+          setActionArray(res.actions)
           CreateActions(res.actions)
         })
 
@@ -117,7 +137,6 @@ export default function FlowsCreate() {
       setActions(incomActions);
     }
 
-
   return (
     <>
     <CreatePanelBox>
@@ -138,8 +157,13 @@ export default function FlowsCreate() {
       />
       <button type="submit" onClick={PostData}>Create Flow</button>
     </CreatePanelBox>
-    <h3>Action</h3>
-    <EditBox route={setAction} isArray={false}/>
+    <Dropdown
+        label="Action" 
+        options={currentAction}
+        value={action}
+        onChange={handleActionChange}
+        placeholder="Select an action"
+      />
     <h3>Content required</h3>
     <EditBox route={setContReq} isArray={true}/>
     <h3>Content optional</h3>

@@ -272,7 +272,7 @@ export const DeleteButton = styled.button`
   margin-right: 0.25em;
   margin-top: 0.25em;
   &:before {
-    content: "\f05e";
+    content: "X";
   }
   &:hover {
     background: darken(rgb(192, 57, 43), 10%);
