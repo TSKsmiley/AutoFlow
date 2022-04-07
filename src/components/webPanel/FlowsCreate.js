@@ -5,6 +5,7 @@ import { CreateFlowGrid, CreatePanelBox } from '../../Styles/Styled';
 import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
 import EditBox from '../univeralComponents/Editbox';
+import CreateInputArea from './CreateInputArea';
 
 
 export default function FlowsCreate() {
@@ -20,6 +21,13 @@ export default function FlowsCreate() {
     const [actions, setActions] = useState([]);
     const [actionArray, setActionArray] = useState([]);
     const [currentAction, setCurrentAction] = useState([]);
+    const [incBool, setIncBool] = useState(false);
+    const [outBool, setOutBool] = useState(false);
+    const [actionBool, setActionBool] = useState(false);
+    const [contReq, setReq] = useState();
+    const [contOpt, setOpt] = useState();
+    const [optOpt, setOptionalOpt] = useState();
+    const [optReq, setOptionalReq] = useState();
 
     const api_url = `${configData.API}/flow`
 
@@ -52,10 +60,15 @@ export default function FlowsCreate() {
 
     const handleIncommingChange = (e) => {
       setIncomming(e.value)
+      setIncBool(true)
     }
 
     const handleOutgoingChange = (e) => {
       let incArray = []
+      let tempContentReq = []
+      let tempContentOpt = []
+      let tempOptionsReq = []
+      let tempOptionsOpt = []
       console.log(actionArray)
       let flag = 0
       for(let i = 0; i < actionArray.length || flag === 0; i++){
@@ -64,22 +77,52 @@ export default function FlowsCreate() {
           for(let j = 0; j < actionArray[i].executeAction.length; j++){
             incArray.push({label: actionArray[i].executeAction[j], value: actionArray[i].executeAction[j]})
           }
+          if(actionArray[i].content.requiredFields !== undefined) {
+            for(let k = 0; k < actionArray[i].content.requiredFields.length; k++){
+              tempContentReq.push(actionArray[i].content.requiredFields[k])
+            }
+          }
+          if(actionArray[i].content.optionalFields !== undefined) {
+            for(let k = 0; k < actionArray[i].content.optionalFields.length; k++){
+              tempContentOpt.push(actionArray[i].content.optionalFields[k])
+            }
+          }
+          if(actionArray[i].options.requiredFields !== undefined) {
+            for(let k = 0; k < actionArray[i].options.requiredFields.length; k++){
+              tempOptionsReq.push(actionArray[i].options.requiredFields[k])
+            }
+          }
+          if(actionArray[i].options.optionalFields !== undefined) {
+            for(let k = 0; k < actionArray[i].optionalFields.optionalFields.length; k++){
+              tempOptionsOpt.push(actionArray[i].options.optionalFields[k])
+            }
+          }
         }
       }
+      setReq(tempContentReq)
+      setOpt(tempContentOpt)
+      setOptionalReq(tempOptionsReq)
+      setOptionalOpt(tempOptionsOpt)
       setCurrentAction(incArray)
+      setActionBool(false)
+      setAction("")
       setOutgoing(e.value)
+      setOutBool(true)
     }
 
     const handleActionChange = (e) => {
       setAction(e.value)
+      setActionBool(true)
     }
 
     function PostData(){
-      let res = sendData(
-        FlowInfo(incomming, [], outgoing, action, contentRequired, contentOptional, optionsRequired, optionsOptional)
-      )
-      console.log(res) 
-      navigate("/panel")
+      if(actionBool && outBool && incBool){
+        let res = sendData(
+          FlowInfo(incomming, [], outgoing, action, contentRequired, contentOptional, optionsRequired, optionsOptional)
+        )
+        console.log(res) 
+        navigate("/panel")
+      }
     }
 
     useEffect(() => {
@@ -164,23 +207,15 @@ export default function FlowsCreate() {
       />
       <button type="submit" onClick={PostData}>Create Flow</button>
     </CreatePanelBox>
+    <h2>Required</h2>
     <CreateFlowGrid>
-    <div>
-      <h3>Content required</h3>
-      <EditBox route={setContReq} isArray={true}/>
-    </div>
-    <div>
-      <h3>Content optional</h3>
-      <EditBox route={setContOpt} isArray={true}/>
-    </div>
-    <div>
-      <h3>Options required</h3>
-      <EditBox route={setOptReq} isArray={true}/>
-    </div>
-    <div>
-      <h3>Options optional</h3>
-      <EditBox route={setOptOpt} isArray={true}/>
-    </div>
+    {contReq?.map((i) => <CreateInputArea key={i} text={"text"} inpFunc={setContReq}/>)}
+    {optReq?.map((i) => <CreateInputArea key={i} text={"text"} inpFunc={setOptReq}/>)}
+    </CreateFlowGrid>
+    <h2>Optional</h2>
+    <CreateFlowGrid>
+    {contOpt?.map((i) => <CreateInputArea key={i} text={"text"} inpFunc={setContOpt}/>)}
+    {optOpt?.map((i) => <CreateInputArea key={i} text={"text"} inpFunc={setOptOpt}/>)}
     </CreateFlowGrid>
     </>
   )

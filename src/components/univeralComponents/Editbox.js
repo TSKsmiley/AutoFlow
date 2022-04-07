@@ -14,14 +14,7 @@ export const EditBox = (route) => {
     }
     const handleBlur = (e) => {
         console.log( 'Saved:', e.target.value);
-
-        if(route.isArray){
-            let text = e.target.value
-            const bigArray = text.split(" ")
-            route.route(bigArray)
-        } else {
-            route.route(e.target.value)
-        }
+        route.route(e.target.value)
 
         console.log(route.isArray)
 
