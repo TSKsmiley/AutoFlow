@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export const EditBox = (props) => {
     const maxChar = 500;
     const rows = 1;
@@ -16,9 +17,9 @@ export const EditBox = (props) => {
         console.log( 'Saved:', e.target.value);
         props.route(e.target.value, props.index)
 
+
         setEditable( false);
     }
-
 
     return (
         <div className="editbox">
