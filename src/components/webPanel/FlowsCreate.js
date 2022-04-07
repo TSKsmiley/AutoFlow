@@ -163,7 +163,7 @@ export default function FlowsCreate() {
     const [state, dispatch] = useReducer(reducer, initialState)
   // Forces update since state does not understand that the state gets updated, and thereby not re rendering
     const [_,forceUpdate] = useReducer((x) => {return x+1},0)
-=======
+
     const api_url = `${configData.API}/flow`
 
     const navigate = useNavigate();
