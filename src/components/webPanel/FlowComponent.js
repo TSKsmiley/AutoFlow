@@ -5,7 +5,7 @@ import configData from '../../config'
 export default function FlowComponent(props) {
   let routes = `${configData.API}/actions`
   function CopyToClip(){
-    navigator.clipboard.writeText(`${routes}${props.from}/${props.id}`)
+    navigator.clipboard.writeText(`${routes}/${props.from}/${props.id}`)
   }
 
   async function DeleteFlow(){

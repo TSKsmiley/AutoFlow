@@ -272,10 +272,24 @@ export const DeleteButton = styled.button`
   margin-right: 0.25em;
   margin-top: 0.25em;
   &:before {
-    content: "\f05e";
+    content: "X";
   }
   &:hover {
     background: darken(rgb(192, 57, 43), 10%);
   }
 
+`
+export const CreateFlowGrid = styled.div`
+  display: grid;
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  /* Ændre 3 tallet til antal kolloner i jeres navbar */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  place-items: center;
+  position: relative;
+  height: 100%;
+  text-align: center;
 `

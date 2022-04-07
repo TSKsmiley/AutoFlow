@@ -1,27 +1,174 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom';
-import { CreatePanelBox } from '../../Styles/Styled';
+import { CreateFlowGrid, CreatePanelBox } from '../../Styles/Styled';
 import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
-import EditBox from '../univeralComponents/Editbox';
+import CreateInputArea from './CreateInputArea';
 
+const initialState = {
+  incomming: "",
+  outgoing: "",
+  action: "",
+  contentRequired: [],
+  contentOptional: [],
+  optionsOptional: [],
+  optionsRequired: [],
+  routes: [],
+  actions: [],
+  actionArray: [],
+  currentAction: [],
+  incBool: false,
+  outBool: false,
+  actionBool: false,
+  contReq: [],
+  contOpt: [],
+  optOpt: [],
+  optReq: [],
+}
+
+function reducer(state, action){
+  switch(action.type){
+    case "handleOutgoingChangeAction": {
+      let incArray = []
+      let tempContentReq = []
+      let tempContentOpt = []
+      let tempOptionsReq = []
+      let tempOptionsOpt = []
+      console.log(state.actionArray)
+      let flag = 0
+      for(let i = 0; i < state.actionArray.length || flag === 0; i++){
+        if(state.actionArray[i].name === action.payload){
+          flag = 1
+          for(let j = 0; j < state.actionArray[i].executeAction.length; j++){
+            incArray.push({label: state.actionArray[i].executeAction[j], value: state.actionArray[i].executeAction[j]})
+          }
+          if(state.actionArray[i].content.requiredFields !== undefined) {
+            for(let k = 0; k < state.actionArray[i].content.requiredFields.length; k++){
+              tempContentReq.push(state.actionArray[i].content.requiredFields[k])
+            }
+          }
+          if(state.actionArray[i].content.optionalFields !== undefined) {
+            for(let k = 0; k < state.actionArray[i].content.optionalFields.length; k++){
+              tempContentOpt.push(state.actionArray[i].content.optionalFields[k])
+            }
+          }
+          if(state.actionArray[i].options.requiredFields !== undefined) {
+            for(let k = 0; k < state.actionArray[i].options.requiredFields.length; k++){
+              tempOptionsReq.push(state.actionArray[i].options.requiredFields[k])
+            }
+          }
+          if(state.actionArray[i].options.optionalFields !== undefined) {
+            for(let k = 0; k < state.actionArray[i].options.optionalFields.length; k++){
+              tempOptionsOpt.push(state.actionArray[i].options.optionalFields[k])
+            }
+          }
+        }
+      }
+      state.contReq = tempContentReq
+      state.contOpt = tempContentOpt
+      state.optReq = tempOptionsReq
+      state.optOpt = tempOptionsOpt
+      state.currentAction = incArray
+      state.actionBool = false
+      state.action = ""
+      state.outgoing = action.payload
+      state.outBool = true
+      return state 
+    }
+    case "handleIncommingChangeAction": {
+      state.incomming = action.payload
+      state.incBool = true
+      return state
+    }
+    case "handleActionChangeAction": {
+      state.action = action.payload
+      state.actionBool = true
+      return state
+    }
+    case "createActionsAndRoutes": {
+      CreateRoutes(action.payload.routes)
+      state.actionArray = action.payload.actions
+      CreateActions(action.payload.actions)
+
+      function CreateRoutes(route = []) {
+        let incomRoutes = []
+        for(let i = 0; i < route.length; i++){
+          console.log(route[i])
+          incomRoutes.push({label: route[i].platform, value: route[i].platform});
+        }
+  
+        
+        console.log(incomRoutes);
+        state.routes = incomRoutes
+      }
+  
+      function CreateActions(actionArray = []) {
+        let incomActions = []
+        for(let i = 0; i < actionArray.length; i++){
+          console.log(actionArray[i])
+          incomActions.push({label: actionArray[i].name, value: actionArray[i].name});
+        }
+  
+        
+        console.log(incomActions);
+        state.actions = incomActions
+      }
+      return state
+    }
+    case "setContRequired": {
+      if(state.contentRequired.length < action.index){
+        for(let i = 0; i < action.index; i++){
+          state.contentRequired.splice(i, 0, undefined)
+        }
+      }
+      state.contentRequired.splice(action.index, 1, action.payload)
+      console.log(state.contentRequired)
+      return state
+    }
+    case "setContOptional": {
+      if(state.contentOptional.length < action.index){
+        for(let i = 0; i < action.index; i++){
+          state.contentOptional.splice(i, 0, undefined)
+        }
+      }
+      state.contentOptional.splice(action.index, 1, action.payload)
+      return state
+    }
+    case "setOptRequired": {
+      if(state.optionsRequired.length < action.index){
+        for(let i = 0; i < action.index; i++){
+          state.optionsRequired.splice(i, 0, undefined)
+        }
+      }
+      state.optionsRequired.splice(action.index, 1, action.payload)
+      return state
+    }
+    case "setOptOptional": {
+      if(state.optionsOptional.length < action.index){
+        for(let i = 0; i < action.index; i++){
+          state.optionsOptional.splice(i, 0, undefined)
+        }
+      }
+      state.optionsOptional.splice(action.index, 1, action.payload)
+      return state
+    }
+    default:
+      throw new Error()
+  }
+}
 
 export default function FlowsCreate() {
-    const [incomming, setIncomming] = useState('');
-    const [outgoing, setOutgoing] = useState('');
-    const [action, setAction] = useState('');
-    const [contentRequired, setContReq] = useState([]);
-    const [contentOptional, setContOpt] = useState([]);
-    const [optionsOptional, setOptOpt] = useState([]);
-    const [optionsRequired, setOptReq] = useState([]);
+  // useReducer
+    const [state, dispatch] = useReducer(reducer, initialState)
+  // Forces update since state does not understand that the state gets updated, and thereby not re rendering
+    const [_,forceUpdate] = useReducer((x) => {return x+1},0)
 
     const api_url = `${configData.API}/flow`
 
     const navigate = useNavigate();
 
     async function sendData(data = {}, url = '/flow') {
-
 
       const response = await fetch(`${configData.API}${url}`, {
         method: 'POST',
@@ -46,19 +193,27 @@ export default function FlowsCreate() {
     }
 
     const handleIncommingChange = (e) => {
-      setIncomming(e.value)
+      dispatch({type: "handleIncommingChangeAction", payload: e.value})
     }
 
+
     const handleOutgoingChange = (e) => {
-      setOutgoing(e.value)
+      dispatch({type: 'handleOutgoingChangeAction', payload: e.value})
+      forceUpdate()
+    }
+
+    const handleActionChange = (e) => {
+      dispatch({type: 'handleActionChangeAction', payload: e.value})
     }
 
     function PostData(){
-      let res = sendData(
-        FlowInfo(incomming, [], outgoing, action, contentRequired, contentOptional, optionsRequired, optionsOptional)
-      )
-      console.log(res) 
-      navigate("/panel")
+      if(state.actionBool && state.outBool && state.incBool){
+        let res = sendData(
+          FlowInfo(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
+        )
+        console.log(res) 
+        navigate("/panel")
+      }
     }
 
     useEffect(() => {
@@ -67,7 +222,7 @@ export default function FlowsCreate() {
       const fetchData = async () => {
         if(!isSubbed) return
         
-        await fetch(api_url, {
+        await fetch(`${api_url}/info`, {
           method: 'GET',
           headers: {
             'Authorization': `${sessionStorage.getItem('token')}`
@@ -79,8 +234,9 @@ export default function FlowsCreate() {
             throw new Error('Did not connect to the server!')
           }
           let res = await result.json()
-          console.log(res)
-  
+          console.log("Res: ", res)
+          dispatch({type: "createActionsAndRoutes", payload: res})
+          
         })
 
       }
@@ -90,45 +246,64 @@ export default function FlowsCreate() {
       return () => isSubbed = false
     }, []);
 
+    function setContReq(e, index){
+      dispatch({type: "setContRequired", payload: e, index: index})
+      forceUpdate()
+    }
+
+    function setOptReq(e, index) {
+      dispatch({type: "setContOptional", payload: e, index: index})
+      forceUpdate()
+    }
+
+    function setContOpt(e, index) {
+      dispatch({type: "setOptRequired", payload: e, index: index})
+      forceUpdate()
+    }
+
+    function setOptOpt(e, index) {
+      dispatch({type: "setOptOptional", payload: e, index: index})
+      forceUpdate()
+    }
+
 
   return (
     <>
     <CreatePanelBox>
       <Dropdown
         label="Incomming" 
-        options={[
-          { label: 'Github', value: 'Github'},
-          { label: 'Slack message', value: 'Slack'},
-        ]}
-        value={incomming}
+        options={state.routes}
+        value={state.incomming}
         onChange={handleIncommingChange}
         placeholder="Select an incomming point"
       />
 
       <Dropdown
         label="Incomming" 
-        options={[
-          { label: 'Mail', value: 'Mail'},
-          { label: 'Slack message', value: 'Slack'},
-          { label: 'Discord message', value: 'Discord'}
-
-        ]}
-        value={outgoing}
+        options={state.actions}
+        value={state.outgoing}
         onChange={handleOutgoingChange}
         placeholder="Select an outgoing point"
       />
+      <Dropdown
+        label="Action" 
+        options={state.currentAction}
+        value={state.action}
+        onChange={handleActionChange}
+        placeholder="Select an action"
+      />
       <button type="submit" onClick={PostData}>Create Flow</button>
     </CreatePanelBox>
-    <h3>Action</h3>
-    <EditBox route={setAction} isArray={false}/>
-    <h3>Content required</h3>
-    <EditBox route={setContReq} isArray={true}/>
-    <h3>Content optional</h3>
-    <EditBox route={setContOpt} isArray={true}/>
-    <h3>Options required</h3>
-    <EditBox route={setOptReq} isArray={true}/>
-    <h3>Options optional</h3>
-    <EditBox route={setOptOpt} isArray={true}/>
+    <h2>Required</h2>
+    <CreateFlowGrid>
+    {state.contReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContReq} inpValue={state.contentRequired}/>)}
+    {state.optReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptReq} inpValue={state.optionsRequired}/>)}
+    </CreateFlowGrid>
+    <h2>Optional</h2>
+    <CreateFlowGrid>
+    {state.contOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContOpt} inpValue={state.contentOptional}/>)}
+    {state.optOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptOpt} inpValue={state.optionsOptional}/>)}
+    </CreateFlowGrid>
     </>
   )
 }

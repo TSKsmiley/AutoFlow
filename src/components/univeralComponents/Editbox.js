@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export const EditBox = (route) => {
+
+export const EditBox = (props) => {
     const maxChar = 500;
     const rows = 1;
     const [remainedChar, setRemainedChar] = useState(500);
@@ -14,16 +15,8 @@ export const EditBox = (route) => {
     }
     const handleBlur = (e) => {
         console.log( 'Saved:', e.target.value);
+        props.route(e.target.value, props.index)
 
-        if(route.isArray){
-            let text = e.target.value
-            const bigArray = text.split(" ")
-            route.route(bigArray)
-        } else {
-            route.route(e.target.value)
-        }
-
-        console.log(route.isArray)
 
         setEditable( false);
     }
