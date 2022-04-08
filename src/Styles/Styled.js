@@ -209,11 +209,16 @@ export const MainPanelGrid = styled.div`
 `;
 
 export const CreatePanelBox = styled.div`
-  margin-top: 5%;
-  margin-left: 40%;
-  margin-right: 40%;
+  display: grid;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5em;
   justify-content: center;
-  height: 50%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  place-items: center;
+  position: relative;
 
 `
 
@@ -281,7 +286,7 @@ export const DeleteButton = styled.button`
 `
 export const CreateFlowGrid = styled.div`
   display: grid;
-  margin-top: 5em;
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
@@ -292,4 +297,32 @@ export const CreateFlowGrid = styled.div`
   position: relative;
   height: 100%;
   text-align: center;
+`
+
+export const WebPanelBackground = styled.div`
+  color: white;
+`
+
+export const PriorityText = styled.h2`
+  margin-left: 6em;
+  margin-top: 3em;
+  margin-bottom: 0em;
+`
+
+export const CreateFlowButton = styled.button`
+  color: white;
+  background-color: transparent;
+  border: 4px solid green;
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: green;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
 `
