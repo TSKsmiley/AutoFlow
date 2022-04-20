@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom';
-import { CreateFlowGrid, CreatePanelBox } from '../../Styles/Styled';
+import { CreateFlowButton, CreateFlowGrid, CreatePanelBox, PriorityText, WebPanelBackground } from '../../Styles/Styled';
 import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
 import CreateInputArea from './CreateInputArea';
@@ -208,6 +208,7 @@ export default function FlowsCreate() {
 
     function PostData(){
       if(state.actionBool && state.outBool && state.incBool){
+        console.log(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
         let res = sendData(
           FlowInfo(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
         )
@@ -236,6 +237,7 @@ export default function FlowsCreate() {
           let res = await result.json()
           console.log("Res: ", res)
           dispatch({type: "createActionsAndRoutes", payload: res})
+          forceUpdate()
           
         })
 
@@ -269,41 +271,50 @@ export default function FlowsCreate() {
 
   return (
     <>
-    <CreatePanelBox>
-      <Dropdown
-        label="Incomming" 
-        options={state.routes}
-        value={state.incomming}
-        onChange={handleIncommingChange}
-        placeholder="Select an incomming point"
-      />
-
-      <Dropdown
-        label="Incomming" 
-        options={state.actions}
-        value={state.outgoing}
-        onChange={handleOutgoingChange}
-        placeholder="Select an outgoing point"
-      />
-      <Dropdown
-        label="Action" 
-        options={state.currentAction}
-        value={state.action}
-        onChange={handleActionChange}
-        placeholder="Select an action"
-      />
-      <button type="submit" onClick={PostData}>Create Flow</button>
-    </CreatePanelBox>
-    <h2>Required</h2>
-    <CreateFlowGrid>
-    {state.contReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContReq} inpValue={state.contentRequired}/>)}
-    {state.optReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptReq} inpValue={state.optionsRequired}/>)}
-    </CreateFlowGrid>
-    <h2>Optional</h2>
-    <CreateFlowGrid>
-    {state.contOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContOpt} inpValue={state.contentOptional}/>)}
-    {state.optOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptOpt} inpValue={state.optionsOptional}/>)}
-    </CreateFlowGrid>
+    <WebPanelBackground>
+      <CreatePanelBox>
+        <div>
+          <Dropdown
+            label="Incomming" 
+            options={state.routes}
+            value={state.incomming}
+            onChange={handleIncommingChange}
+            placeholder="Select an incomming point"
+          />
+        </div>
+        <div>
+          <Dropdown
+            label="Incomming" 
+            options={state.actions}
+            value={state.outgoing}
+            onChange={handleOutgoingChange}
+            placeholder="Select an outgoing point"
+          />
+        </div>
+        <div>
+          <Dropdown
+            label="Action" 
+            options={state.currentAction}
+            value={state.action}
+            onChange={handleActionChange}
+            placeholder="Select an action"
+          />
+        </div>
+        <div>
+          <CreateFlowButton type="submit" onClick={PostData}>Create Flow</CreateFlowButton>
+        </div>
+      </CreatePanelBox>
+      <PriorityText>Required</PriorityText>
+      <CreateFlowGrid>
+        {state.contReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContReq} inpValue={state.contentRequired}/>)}
+        {state.optReq?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptReq} inpValue={state.optionsRequired}/>)}
+      </CreateFlowGrid>
+      <PriorityText>Optional</PriorityText>
+      <CreateFlowGrid>
+        {state.contOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContOpt} inpValue={state.contentOptional}/>)}
+        {state.optOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptOpt} inpValue={state.optionsOptional}/>)}
+      </CreateFlowGrid>
+    </WebPanelBackground>
     </>
   )
 }

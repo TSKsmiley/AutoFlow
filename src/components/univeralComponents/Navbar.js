@@ -14,10 +14,6 @@ export default function Navbar() {
     <Fragment>
         <NavbarStyled>
             <Navbutton />
-            {showPanelNav 
-              ? <NavbarPanel/>
-              : <Fragment/>
-            }
             {isLoggedIn
               ? <LogoutButtonGoogle />
               : <NavLoginButton />

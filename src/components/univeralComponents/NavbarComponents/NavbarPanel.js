@@ -8,9 +8,9 @@ export default function NavbarPanel() {
   return (
     <NavbarPanelStyled>
       <NavbarPanelTableStyled>
-        <div>Ass</div>
-        <div>Titties</div>
-        <div>Windows XP</div>
+        <div>Home</div>
+        <div>Flows</div>
+        <div>Create Flows</div>
       </NavbarPanelTableStyled>
     </NavbarPanelStyled>
   );
