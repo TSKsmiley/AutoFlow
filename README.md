@@ -1,14 +1,50 @@
 # P2 projekt (Dynamic integration of apis)
 This repo contains the react project for the website that interacts with the api located at [TSKsmiley/AutoFlowAPI](https://github.com/TSKsmiley/AutoFlowAPI)
 
-## Available Scripts
+# Requirements
 
- In the project directory, you can run:
+ - Node.js 16.x
+ - working	 [AutoFlowAPI](https://github.com/TSKsmiley/AutoFlowAPI)
 
- ### `npm start`
+# Installation
+First clone the repo 
+```bash
+git clone https://github.com/TSKsmiley/AutoFlow
+```
+then change your directory to the new folder
+```bash
+cd AutoFlow
+```
+next up install the required packages
+```bash
+npm i
+```
+next up create a  **config.json** file inside the **src** folder. Fill out the following fields accordingly, for this step it is required that you have a running [AutoFlowAPI](https://github.com/TSKsmiley/AutoFlowAPI) 
 
- Runs the app in the development mode.\
- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    {
+	   "GOOGLE_TOKEN":  "your token here",
+	   "API":  "link to your autoflow api"
+    }
 
- The page will reload when you make changes.\
- You may also see any lint errors in the console.
+There are now two ways to go installation or server deployment
+## Development
+to run the site in development mode simply run
+```bash
+npm start
+```
+the site should now be available on [localhost:3000](http://localhost:3000)
+## Deployment
+to deploy the site start by building the project by running
+```bash
+npm run build
+```
+now the site has been built. The site can now be hosted with "**serve**"
+to install serve just run:
+```bash
+npm install -g serve
+```
+and to start the site up run
+```bash
+serve -s build
+```
+the site should now be available on [localhost:3000](http://localhost:3000)
