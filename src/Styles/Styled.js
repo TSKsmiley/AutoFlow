@@ -6,13 +6,12 @@ const GlobalButtonStyle = styled.button`
 `
 
 export const LoginButton = styled(GlobalButtonStyle)`
-  float: right;
   width: 8em;
   margin: 0 1em auto auto;
 
   transition: all 0.5s ease;
-  color: #fff;
-  border: 3px solid white;
+  color: black;
+  border: 3px solid black;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -33,7 +32,7 @@ export const LogoutButton = styled.div`
 `;
 
 export const NavButton = styled(GlobalButtonStyle)`
-  color: white;
+  color: black;
   font-size: 32px;
   background-color: Transparent;
   float: left;
@@ -45,11 +44,8 @@ export const NavButton = styled(GlobalButtonStyle)`
 export const NavbarStyled = styled.div`
   display: flex;
   align-items: center;
-  background: linear-gradient(
-    45deg,
-    hsl(207.5, 84.8%, 51%),
-    hsla(240, 84%, 62%, 1)
-  );
+  background: #f9dab4;
+  box-shadow: 0 3px 11px rgba(28, 28, 28, 0.4);
   height: 100px;
   width: 100%;
 `;
