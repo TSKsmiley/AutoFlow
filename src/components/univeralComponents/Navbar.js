@@ -11,14 +11,12 @@ export default function Navbar() {
   const { isLoggedIn, showPanelNav } = useContext(Context);
 
   return (
-    <Fragment>
-        <NavbarStyled>
-            <Navbutton />
-            {isLoggedIn
-              ? <LogoutButtonGoogle />
-              : <NavLoginButton />
-            }
-        </NavbarStyled>
-    </Fragment>
+      <NavbarStyled>
+          <Navbutton />
+          {isLoggedIn
+            ? <LogoutButtonGoogle />
+            : <NavLoginButton />
+          }
+      </NavbarStyled>
   )
 }
