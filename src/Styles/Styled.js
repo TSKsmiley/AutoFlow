@@ -45,8 +45,7 @@ export const NavbarStyled = styled.div`
   display: flex;
   align-items: center;
   background: #f9dab4;
-  box-shadow: 0 3px 11px rgba(28, 28, 28, 0.4);
-  height: 100px;
+  height: 12vh;
   width: 100%;
 `;
 
@@ -208,7 +207,6 @@ export const MainPanelGrid = styled.div`
   gap: 1em;
   place-items: center;
   position: relative;
-  height: 100%;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -345,4 +343,16 @@ export const CreateFlowButton = styled(GlobalButtonStyle)`
 
 export const FlowFlex = styled.div`
   display: flex;
+`
+
+export const BlueBackground = styled.section`
+  background: hsla(200, 93%, 49%, 1);
+  background: linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+  background: -moz-linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+  background: -webkit-linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+  background-size: cover;
+  border-radius: 1.25em 1.25em 0px 0px;
+  min-height: 88vh;
+  overflow: hidden;
+  padding-bottom: 5vh;
 `

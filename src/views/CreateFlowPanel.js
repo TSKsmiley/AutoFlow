@@ -5,6 +5,7 @@ import Navbar from '../components/univeralComponents/Navbar'
 import { Context } from '../Context';
 import FlowsCreate from '../components/webPanel/FlowsCreate';
 import {Helmet} from "react-helmet";
+import { BlueBackground } from '../Styles/Styled';
 
 export default function CreateFlowPanel() {
     const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
@@ -30,7 +31,9 @@ export default function CreateFlowPanel() {
       </Helmet>
       <GlobalBackground />
       <Navbar />
-      <FlowsCreate />
+      <BlueBackground>
+        <FlowsCreate />
+      </BlueBackground>
     </>
   )
 }
