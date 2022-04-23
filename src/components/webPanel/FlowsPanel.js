@@ -40,6 +40,7 @@ export default function FlowsPanel() {
       })
 
     }
+    fetchData()
     const interval = setInterval(() => {
       fetchData()
     }, 1000)
