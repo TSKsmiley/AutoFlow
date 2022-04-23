@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const LoginButton = styled.button`
-  float: right;
+const GlobalButtonStyle = styled.button`
   cursor: pointer;
+  border: none;
+`
+
+export const LoginButton = styled(GlobalButtonStyle)`
+  float: right;
   width: 8em;
   margin: 0 1em auto auto;
 
@@ -28,13 +32,11 @@ export const LogoutButton = styled.div`
   margin: 1.7em 1em auto auto;
 `;
 
-export const NavButton = styled.button`
+export const NavButton = styled(GlobalButtonStyle)`
   color: white;
   font-size: 32px;
   background-color: Transparent;
-  border: none;
   float: left;
-  cursor: pointer;
   height: 50px;
   margin-left: 0.35em;
   width: 5%;
@@ -76,13 +78,15 @@ export const NavbarPanelTableStyled = styled.nav`
 export const CenterText = styled.div`
   text-align: center;
   position: absolute;
-  top: 35%;
-  bottom: 65%;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+
 `;
 
 export const AutoFlowLogoText = styled.h1`
-  font-size: 128px;
+  font-size: 10vmin;
   background: linear-gradient(
     45deg,
     hsl(190.5, 84.8%, 51%),
@@ -150,16 +154,24 @@ export const Box = styled.div`
   height: 6em;
   max-height: 6em;
   width: 20vw;
-  max-width: 14em;
-  background-color: coral;
-  &:first-child{
-    margin-top: 1em;
+  min-width: 8em;
+  background: linear-gradient(90deg, #FFB703 10%, #FB8500), transparent;
+  box-shadow: 0 3px 11px rgba(28, 28, 28, 0.4);
+  padding: 0.25em;
+  overflow: hidden;
+  position: relative;
+  margin-top: 1em;
+
+  @media (max-width: 768px) {
+    width: 80vw;
   }
+  
 `;
 
-export const AddButton = styled.button`
+export const AddButton = styled(GlobalButtonStyle)`
   border: 2px solid lightgrey;
-	background-color: coral;
+	background: linear-gradient(90deg, #FFB703 20%, #FB8500), transparent;
+  box-shadow: 0 3px 11px rgba(28, 28, 28, 0.55);
 	font-size: 22px;
 	height: 2.5em;
 	width: 2.5em;
@@ -172,7 +184,7 @@ export const AddButton = styled.button`
 	&:before {
 		content: "";
 		display: block;
-		background-color: grey;
+		background-color: white;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -190,22 +202,22 @@ export const AddButton = styled.button`
 	}
 `;
 
-
-
 export const MainPanelGrid = styled.div`
-  /* Ændre width */
   width: 40%;
   display: grid;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  /* Ændre 3 tallet til antal kolloner i jeres navbar */
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   place-items: center;
   position: relative;
   height: 100%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const CreatePanelBox = styled.div`
@@ -223,10 +235,14 @@ export const CreatePanelBox = styled.div`
 `
 
 export const LeftText = styled.h3`
-  float: left;
-  margin-left: 0.25em;
+  margin: 0;
   margin-top: 0.25em;
-
+  width: 80%;
+  display: inline-block;
+  //max-width: 60%;
+  font-size: 0.9em;
+  color: white;
+  text-shadow: 0 2px 1px rgba(28, 28, 28, 0.55);;
 `
 
 export const RightText = styled.h3`
@@ -236,49 +252,51 @@ export const RightText = styled.h3`
 
 `
 
-export const CopyButton = styled.button`
-  margin-bottom: 1.25em;
-  justify-content: center;
-  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+export const CopyButton = styled(GlobalButtonStyle)`
   border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
+  border: 1.5px solid white;
+  background: none;
   color: #FFFFFF;
-  cursor: pointer;
-  flex-shrink: 0;
   font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-  font-size: 16px;
-  height: 1.5rem;
-  padding: 0 1.6rem;
+  font-size: 100%;
+  font-weight: 700;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
   transition: all .5s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  padding: 0.15em 0;
+  width: 80%;
+  white-space: nowrap;
+  display: grid;
+  place-content: center;
   &:hover{
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-  transition-duration: .1s;
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
   }
 
 `
 
-export const DeleteButton = styled.button`
+export const DeleteButton = styled(GlobalButtonStyle)`
 
   font-family:'Open Sans';
   font-size: 16px;
-  font-weight:400;
-  display:inline-block;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
   color:#FFF;
   border-radius: .25em;
   text-shadow: -1px -1px 0px rgba(0,0,0,0.4);
   background: rgb(192, 57, 43);
-  float: right;
-  margin-right: 0.25em;
-  margin-top: 0.25em;
-  &:before {
-    content: "X";
-  }
+  margin: 0 0.25em 0 auto;
+  height: 1.5em;
+  width: 1.5em;
   &:hover {
     background: darken(rgb(192, 57, 43), 10%);
   }
@@ -290,13 +308,16 @@ export const CreateFlowGrid = styled.div`
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  /* Ændre 3 tallet til antal kolloner i jeres navbar */
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   place-items: center;
   position: relative;
   height: 100%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 export const WebPanelBackground = styled.div`
@@ -309,7 +330,7 @@ export const PriorityText = styled.h2`
   margin-bottom: 0em;
 `
 
-export const CreateFlowButton = styled.button`
+export const CreateFlowButton = styled(GlobalButtonStyle)`
   color: white;
   background-color: transparent;
   border: 4px solid green;
@@ -324,4 +345,8 @@ export const CreateFlowButton = styled.button`
     background-color: green;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
+`
+
+export const FlowFlex = styled.div`
+  display: flex;
 `

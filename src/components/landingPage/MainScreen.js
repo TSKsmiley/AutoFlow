@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { CenterText, AutoFlowLogoText, AutoflowCatch } from '../../Styles/Styled'
 
 

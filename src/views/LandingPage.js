@@ -1,9 +1,10 @@
 import { React, useContext, useEffect, useState } from "react";
-import { Context } from "./Context";
-import { GlobalStyles } from "./Styles/Global";
-import Navbar from "./components/univeralComponents/Navbar";
-import MainScreen from "./components/landingPage/MainScreen";
+import { Context } from "../Context";
+import { GlobalStyles } from "../Styles/Global";
+import Navbar from "../components/univeralComponents/Navbar";
+import MainScreen from "../components/landingPage/MainScreen";
 import { useNavigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 export default function LandingPage() {
   const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
@@ -23,6 +24,9 @@ export default function LandingPage() {
   }, [setShowPanelNav, showPanelNav]);
   return (
     <>
+      <Helmet>
+        <title>Autoflow</title>
+      </Helmet>
       <GlobalStyles />
       <Navbar />
       <MainScreen />

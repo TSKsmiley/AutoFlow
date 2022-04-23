@@ -8,16 +8,19 @@ export const GlobalStyles = createGlobalStyle`
         background-size: cover;
         overflow: hidden;
         background-position: center;
-        margin: 0;
-        padding: 0;
     }
 `
 
 export const GlobalBackground = createGlobalStyle`
     body {
-        background: linear-gradient(90deg ,hsla(250, 100%, 32%, 1), hsl(210, 84.8%, 51%));
-        margin: 0;
-        padding: 0;
+        background: hsla(200, 93%, 49%, 1);
+
+        background: linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+
+        background: -moz-linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+
+        background: -webkit-linear-gradient(225deg, hsla(200, 93%, 49%, 1) 0%, hsla(225, 89%, 47%, 1) 90%);
+
         background-size: cover;
     }
 
@@ -31,8 +34,6 @@ export const LoginBackground = createGlobalStyle`
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
-        margin: 0;
-        padding: 0;
     }
 `
 
