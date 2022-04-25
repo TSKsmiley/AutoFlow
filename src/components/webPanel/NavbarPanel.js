@@ -5,10 +5,8 @@ import { NavbarPanelStyled } from '../../Styles/Styled'
 
 export default function Navbar() {
   return (
-    <Fragment>
-        <NavbarPanelStyled>
-            <Navbutton />
-        </NavbarPanelStyled>
-    </Fragment>
+      <NavbarPanelStyled>
+          <Navbutton />
+      </NavbarPanelStyled>
   )
 }

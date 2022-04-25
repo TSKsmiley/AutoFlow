@@ -35,7 +35,6 @@ function reducer(state, action){
       let tempContentOpt = []
       let tempOptionsReq = []
       let tempOptionsOpt = []
-      console.log(state.actionArray)
       let flag = 0
       for(let i = 0; i < state.actionArray.length || flag === 0; i++){
         if(state.actionArray[i].name === action.payload){
@@ -270,7 +269,6 @@ export default function FlowsCreate() {
 
 
   return (
-    <>
     <WebPanelBackground>
       <CreatePanelBox>
         <div>
@@ -315,6 +313,5 @@ export default function FlowsCreate() {
         {state.optOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptOpt} inpValue={state.optionsOptional}/>)}
       </CreateFlowGrid>
     </WebPanelBackground>
-    </>
   )
 }

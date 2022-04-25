@@ -1,9 +1,11 @@
 import React, {useContext, useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
-import { GlobalBackground } from './Styles/Global'
-import Navbar from './components/univeralComponents/Navbar'
-import { Context } from './Context';
-import FlowsCreate from './components/webPanel/FlowsCreate';
+import { GlobalBackground } from '../Styles/Global'
+import Navbar from '../components/univeralComponents/Navbar'
+import { Context } from '../Context';
+import FlowsCreate from '../components/webPanel/FlowsCreate';
+import {Helmet} from "react-helmet";
+import { BlueBackground } from '../Styles/Styled';
 
 export default function CreateFlowPanel() {
     const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
@@ -24,9 +26,14 @@ export default function CreateFlowPanel() {
     }, [setShowPanelNav, showPanelNav]);
   return (
     <>
+      <Helmet>
+        <title>Autoflow | Create</title>
+      </Helmet>
       <GlobalBackground />
       <Navbar />
-      <FlowsCreate />
+      <BlueBackground>
+        <FlowsCreate />
+      </BlueBackground>
     </>
   )
 }
