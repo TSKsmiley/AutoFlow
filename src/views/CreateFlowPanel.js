@@ -8,7 +8,7 @@ import {Helmet} from "react-helmet";
 import { BlueBackground } from '../Styles/Styled';
 
 export default function CreateFlowPanel() {
-    const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
+    const { isLoggedIn } = useContext(Context);
     const [__isMounted, setMounted] = useState(true);
   
     const navigate = useNavigate();
@@ -20,10 +20,7 @@ export default function CreateFlowPanel() {
       
       return () => setMounted(false);
     }, []);
-  
-    useEffect(() => {
-      setShowPanelNav(true);
-    }, [setShowPanelNav, showPanelNav]);
+
   return (
     <>
       <Helmet>
