@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import {Helmet} from "react-helmet";
 
 import LoginPanel from "../components/loginPage/LoginPanel";
