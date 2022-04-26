@@ -8,7 +8,7 @@ import { BlueBackground } from "../Styles/Styled";
 import { GlobalBackground } from "../Styles/Global";
 
 export default function MainPanel() {
-  const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
+  const { isLoggedIn } = useContext(Context);
   const [__isMounted ] = useState(true);
 
   const navigate = useNavigate();
@@ -19,10 +19,6 @@ export default function MainPanel() {
     }
     
   }, []);
-
-  useEffect(() => {
-    setShowPanelNav(true);
-  }, [setShowPanelNav, showPanelNav]);
 
   return (
     <>

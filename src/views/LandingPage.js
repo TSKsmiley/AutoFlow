@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {Helmet} from "react-helmet";
 
 export default function LandingPage() {
-  const { showPanelNav, setShowPanelNav, isLoggedIn } = useContext(Context);
+  const { isLoggedIn } = useContext(Context);
   const [__isMounted, setMounted] = useState(true);
 
   const navigate = useNavigate();
@@ -19,9 +19,6 @@ export default function LandingPage() {
     return () => setMounted(false);
   }, []);
 
-  useEffect(() => {
-    setShowPanelNav(false);
-  }, [setShowPanelNav, showPanelNav]);
   return (
     <>
       <Helmet>

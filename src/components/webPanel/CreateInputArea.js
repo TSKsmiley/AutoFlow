@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import EditBox from '../univeralComponents/Editbox'
 
 export default function CreateInputArea(props) {
