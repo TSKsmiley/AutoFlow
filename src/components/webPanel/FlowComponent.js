@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, CopyButton, DeleteButton, LeftText } from '../../Styles/Styled'
+import { Box, CopyButton, DeleteButton, FlowFlex, LeftText } from '../../Styles/Styled'
 import configData from '../../config'
 
 export default function FlowComponent(props) {
@@ -28,13 +28,12 @@ export default function FlowComponent(props) {
 
 
   return (
-    <div>
-        <Box>
-            <LeftText>{props.from} &#8594;</LeftText>
-            <LeftText>{props.to}</LeftText>
-            <DeleteButton type='button' onClick={DeleteFlow}></DeleteButton>
-            <CopyButton type="button" onClick={CopyToClip}>Copy To Clipboard</CopyButton>
-        </Box>
-    </div>
+      <Box>
+          <FlowFlex>
+            <LeftText>{props.from} &#8594; {props.to}</LeftText>
+            <DeleteButton type='button' onClick={DeleteFlow}>X</DeleteButton>
+          </FlowFlex>
+          <CopyButton type="button" onClick={CopyToClip}>Copy To Clipboard</CopyButton>
+      </Box>
   )
 }

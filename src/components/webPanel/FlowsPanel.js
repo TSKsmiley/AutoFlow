@@ -7,7 +7,7 @@ import configData from "../../config.json";
 export default function FlowsPanel() {
     const [flows, setFlows] = useState([])
     const [update, setUpdate] = useState(1)
-    const api_url = `${configData.API}/flow` // maybe not right url
+    const api_url = `${configData.API}/flow`
 
     const navigate = useNavigate();
     
@@ -40,6 +40,7 @@ export default function FlowsPanel() {
       })
 
     }
+    fetchData()
     const interval = setInterval(() => {
       fetchData()
     }, 1000)

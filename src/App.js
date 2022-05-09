@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import CreateFlowPanel from './CreateFlowPanel';
-import LandingPage from './LandingPage';
-import Login from './Login';
-import MainPanel from './MainPanel';
+import CreateFlowPanel from './views/CreateFlowPanel';
+import LandingPage from './views/LandingPage';
+import Login from './views/Login';
+import MainPanel from './views/MainPanel';
 
 function App() {
   return (
