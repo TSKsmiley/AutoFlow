@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom';
-import { CreateFlowButton, CreateFlowGrid, CreatePanelBox, PriorityText, WebPanelBackground } from '../../Styles/Styled';
+import { CreateFlowButton, CreateFlowGrid, CreatePanelBox, DropdownDiv, PriorityText, WebPanelBackground } from '../../Styles/Styled';
 import configData from "../../config.json";
 import FlowInfo from '../../Models/Flowinfo';
 import CreateInputArea from './CreateInputArea';
@@ -212,6 +212,11 @@ export default function FlowsCreate() {
           FlowInfo(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
         )
         console.log(res) 
+
+        if(state.incomming === "Slack") {
+          window.location.replace('https://api.aau-sw.dk/auth/slack')
+        }
+
         navigate("/panel")
       }
     }
@@ -271,25 +276,25 @@ export default function FlowsCreate() {
   return (
     <WebPanelBackground>
       <CreatePanelBox>
-        <div>
+        <DropdownDiv>
           <Dropdown
-            label="Incomming" 
+            label="Incoming" 
             options={state.routes}
             value={state.incomming}
             onChange={handleIncommingChange}
-            placeholder="Select an incomming point"
+            placeholder="Select an incoming point"
           />
-        </div>
-        <div>
+        </DropdownDiv>
+        <DropdownDiv>
           <Dropdown
-            label="Incomming" 
+            label="Incoming" 
             options={state.actions}
             value={state.outgoing}
             onChange={handleOutgoingChange}
             placeholder="Select an outgoing point"
           />
-        </div>
-        <div>
+        </DropdownDiv>
+        <DropdownDiv>
           <Dropdown
             label="Action" 
             options={state.currentAction}
@@ -297,7 +302,7 @@ export default function FlowsCreate() {
             onChange={handleActionChange}
             placeholder="Select an action"
           />
-        </div>
+        </DropdownDiv>
         <div>
           <CreateFlowButton type="submit" onClick={PostData}>Create Flow</CreateFlowButton>
         </div>
