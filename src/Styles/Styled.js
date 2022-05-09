@@ -356,3 +356,12 @@ export const BlueBackground = styled.section`
   overflow: hidden;
   padding-bottom: 5vh;
 `
+
+export const DropdownDiv = styled.div`
+  border: 1px solid white;
+  padding: 0.75em 0.5em;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+
+`
