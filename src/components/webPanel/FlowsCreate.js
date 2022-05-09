@@ -245,12 +245,12 @@ export default function FlowsCreate() {
     }
 
     function setOptReq(e, index) {
-      dispatch({type: "setContOptional", payload: e, index: index})
+      dispatch({type: "setOptRequired", payload: e, index: index})
       forceUpdate()
     }
 
     function setContOpt(e, index) {
-      dispatch({type: "setOptRequired", payload: e, index: index})
+      dispatch({type: "setContOptional", payload: e, index: index})
       forceUpdate()
     }
 
