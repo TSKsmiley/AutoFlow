@@ -14,7 +14,6 @@ export const EditBox = (props) => {
         setEditable( true);
     }
     const handleBlur = (e) => {
-        console.log( 'Saved:', e.target.value);
         props.route(e.target.value, props.index)
 
 

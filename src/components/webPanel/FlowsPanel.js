@@ -27,7 +27,6 @@ export default function FlowsPanel() {
       })
       .then(async (result) => {
         if(!result.ok && isSubbed){
-          console.log("Not ok")
           setFlows(defaultFlows.flows)
           throw new Error('Did not connect to the server!')
         }
