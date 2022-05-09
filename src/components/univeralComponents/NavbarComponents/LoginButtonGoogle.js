@@ -11,15 +11,12 @@ export default function LoginButtonGoogle() {
   const responseGoogle = (response) => {
     setIsLoggedIn(true);
     navigate("/panel");
-    console.log("Successfully logged in!");
     let id_token = response.getAuthResponse().id_token;
     sessionStorage.setItem('token', `${id_token}`)
 
   };
 
   const responseGoogleFailed = (response) => {
-    console.log("Failed logging in!");
-    console.log(response);
   };
 
   return (

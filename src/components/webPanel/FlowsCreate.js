@@ -93,24 +93,18 @@ function reducer(state, action){
       function CreateRoutes(route = []) {
         let incomRoutes = []
         for(let i = 0; i < route.length; i++){
-          console.log(route[i])
           incomRoutes.push({label: route[i].platform, value: route[i].platform});
         }
-  
-        
-        console.log(incomRoutes);
+
         state.routes = incomRoutes
       }
   
       function CreateActions(actionArray = []) {
         let incomActions = []
         for(let i = 0; i < actionArray.length; i++){
-          console.log(actionArray[i])
           incomActions.push({label: actionArray[i].name, value: actionArray[i].name});
         }
-  
-        
-        console.log(incomActions);
+
         state.actions = incomActions
       }
       return state
@@ -122,7 +116,6 @@ function reducer(state, action){
         }
       }
       state.contentRequired.splice(action.index, 1, action.payload)
-      console.log(state.contentRequired)
       return state
     }
     case "setContOptional": {
@@ -184,11 +177,9 @@ export default function FlowsCreate() {
 
           body: JSON.stringify(data)
         })
-        console.log(response)
         if(response.status === 200){
           return await response.json()
         }
-        console.log("Not ok")
     }
 
     const handleIncommingChange = (e) => {
@@ -207,11 +198,9 @@ export default function FlowsCreate() {
 
     function PostData(){
       if(state.actionBool && state.outBool && state.incBool){
-        console.log(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
         let res = sendData(
           FlowInfo(state.incomming, [], state.outgoing, state.action, state.contentRequired, state.contentOptional, state.optionsRequired, state.optionsOptional)
         )
-        console.log(res) 
 
         if(state.incomming === "Slack") {
           window.location.replace('https://api.aau-sw.dk/auth/slack')
@@ -235,11 +224,9 @@ export default function FlowsCreate() {
         })
         .then(async (result) => {
           if(!result.ok){
-            console.log("Not ok")
             throw new Error('Did not connect to the server!')
           }
           let res = await result.json()
-          console.log("Res: ", res)
           dispatch({type: "createActionsAndRoutes", payload: res})
           forceUpdate()
           
@@ -258,12 +245,12 @@ export default function FlowsCreate() {
     }
 
     function setOptReq(e, index) {
-      dispatch({type: "setContOptional", payload: e, index: index})
+      dispatch({type: "setOptRequired", payload: e, index: index})
       forceUpdate()
     }
 
     function setContOpt(e, index) {
-      dispatch({type: "setOptRequired", payload: e, index: index})
+      dispatch({type: "setContOptional", payload: e, index: index})
       forceUpdate()
     }
 

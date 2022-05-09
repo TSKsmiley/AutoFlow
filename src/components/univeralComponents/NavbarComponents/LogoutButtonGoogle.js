@@ -13,7 +13,6 @@ export default function LogoutButtonGoogle() {
     setIsLoggedIn(false);
     sessionStorage.clear();
     navigate("/");
-    console.log("Successfully logged out!");
   };
 
   return (
