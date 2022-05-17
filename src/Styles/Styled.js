@@ -225,7 +225,7 @@ export const CreatePanelBox = styled.div`
   gap: 1em;
   place-items: center;
   position: relative;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -325,16 +325,26 @@ export const PriorityText = styled.h2`
   margin-left: 6em;
   margin-top: 3em;
   margin-bottom: 0em;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    text-align: center;
+    width: center;
+  }
 `
 
 export const CreateFlowButton = styled(GlobalButtonStyle)`
   color: white;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
   background-color: transparent;
   border: 4px solid green;
   padding: 0.75em 2em;
+  margin-top: 4em;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: grid;
   font-size: 16px;
   transition-duration: 0.4s;
 
@@ -357,7 +367,7 @@ export const BlueBackground = styled.section`
   border-radius: 1.25em 1.25em 0px 0px;
   min-height: 88vh;
   overflow: hidden;
-  padding-bottom: 5vh;
+  padding-bottom: 15vh;
 `
 
 export const DropdownDiv = styled.div`
