@@ -225,7 +225,10 @@ export const CreatePanelBox = styled.div`
   gap: 1em;
   place-items: center;
   position: relative;
-
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 export const LeftText = styled.h3`
