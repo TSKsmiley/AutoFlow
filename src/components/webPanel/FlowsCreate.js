@@ -290,9 +290,6 @@ export default function FlowsCreate() {
             placeholder="Select an action"
           />
         </DropdownDiv>
-        <div>
-          <CreateFlowButton type="submit" onClick={PostData}>Create Flow</CreateFlowButton>
-        </div>
       </CreatePanelBox>
       <PriorityText>Required</PriorityText>
       <CreateFlowGrid>
@@ -304,6 +301,7 @@ export default function FlowsCreate() {
         {state.contOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setContOpt} inpValue={state.contentOptional}/>)}
         {state.optOpt?.map((element, i) => <CreateInputArea key={i} index={i} text={element} inpFunc={setOptOpt} inpValue={state.optionsOptional}/>)}
       </CreateFlowGrid>
+      <CreateFlowButton type="submit" onClick={PostData}>Create Flow</CreateFlowButton>
     </WebPanelBackground>
   )
 }
