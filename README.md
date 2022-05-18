@@ -71,7 +71,9 @@ An example of the structure of an inbound JSON file could be as following:
 }
 ```
 
-On the website, when creating a flow, you have to fill out some *required* and *optional* fields. The optional felds can be dynamically parsed with data from the in-bound HTTP request. An example of an optional field that is dynamically parsed is:
+On the website, when creating a flow, you have to fill out some *required* and *optional* fields. An example of the *optional* and *required* fields from the website is visualized in the following figure:
+![A visualiuzation of the *required* and *optional fields from the webpanel*](public/images/CreateFlow_Panel.png)
+The optional felds can be dynamically parsed with data from the in-bound HTTP request. An example of an optional field that is dynamically parsed is:
 ```
 {user.name} with the id:"{user.id}", just {action}.
 ```
