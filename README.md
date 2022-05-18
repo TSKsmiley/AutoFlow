@@ -8,7 +8,9 @@ This repo contains the react project for the website that interacts with the api
 - [Installation](#installation)
   - [Development](#development)
   - [Deployment](#deployment)
-- [Setting up flows](#setting-up-flows)
+- [Usage](#usage)
+  - [Creating and removing flows](#creating-and-removing-flows)
+  - [Setting up flows](#setting-up-flows)
 
 # Requirements
 
@@ -57,7 +59,12 @@ and to start the site up run
 serve -s buildThis figure represents the second part of the \textit{flowInfo} object from the \textit{flowInfo.js} fileThis figure represents the second part of the \textit{flowInfo} object from the \textit{flowInfo.js} file
 ```
 the site should now be available on [localhost:3000](http://localhost:3000)
-# Setting up flows
+# Usage
+Using the web-panel will in the following subsections be explained.
+## Creating and removing flows
+![A visualiuzation of the web-panel*](public/images/MainPanelAutoFlow.png)
+Removal of a flow is done by pressing the **x** besides the specific flow. To create a flow one simply have to press the **+** button when logged in. This redirects the user to the flow creation site. A guide to create flows can be seen in [Setting up flows](#setting-up-flows).
+## Setting up flows
 The process of creating a flow is quite simple if no data parsing is needed. If however, one wants to dynamically add some data from the JSON file, from the in-bound HTTP request, one is required to have some knowledge on the structure of the specific file, and how to format it correctly in the creation of the flow.
 
 An example of the structure of an inbound JSON file could be as following:
