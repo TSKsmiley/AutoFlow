@@ -63,10 +63,10 @@ The process of creating a flow is quite simple if no data parsing is needed. If 
 An example of the structure of an inbound JSON file could be as following:
 ```JSON
 {
-    action: "created a flow",
-    user: {
-        name: "TestName",
-        id: "12345678"
+    "action": "created a flow",
+    "user": {
+        "name": "TestName",
+        "id": "12345678"
     }
 }
 ```
