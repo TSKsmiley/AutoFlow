@@ -56,7 +56,7 @@ npm install -g serve
 ```
 and to start the site up run
 ```bash
-serve -s buildThis figure represents the second part of the \textit{flowInfo} object from the \textit{flowInfo.js} fileThis figure represents the second part of the \textit{flowInfo} object from the \textit{flowInfo.js} file
+serve -s build
 ```
 the site should now be available on [localhost:3000](http://localhost:3000)
 # Usage
