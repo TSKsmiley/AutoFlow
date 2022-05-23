@@ -34,7 +34,7 @@ export const EditBox = (props) => {
                 onFocus={handleFocus}
                 className={`editbox-textarea ${isEditable ? "text-edit active-box" : ""} `}
                 required={true}
-                style={{resize: "none"}}
+                style={{resize: "vertical"}}
             ></textarea>
             <div className={`edit-bottom  d-flex justify-content-end text-detail ${isEditable ? "" : "invisible"}`}>
                 <i className="remained-char">
